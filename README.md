@@ -23,6 +23,5 @@
 
 ![image_2024-10-21_12-09-37](https://github.com/user-attachments/assets/95664975-de2c-4497-b808-54a9668e826e)
 
-#
 
 
