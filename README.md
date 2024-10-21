@@ -21,5 +21,8 @@
 
 Схема БД
 
-![image_2024-10-21_12-06-25](https://github.com/user-attachments/assets/94f8135c-c4fa-4b4c-9f0a-4d5b65840057)
+![image_2024-10-21_12-09-37](https://github.com/user-attachments/assets/95664975-de2c-4497-b808-54a9668e826e)
+
+#
+
 
