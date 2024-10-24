@@ -23,5 +23,24 @@
 
 ![image_2024-10-21_12-09-37](https://github.com/user-attachments/assets/95664975-de2c-4497-b808-54a9668e826e)
 
+## Пользовательский интерфейс
 
+### User-flow диаграммы
 
+User-flow для пользователя
+
+![user](https://github.com/user-attachments/assets/19c35be3-b1ef-489f-aa17-91647e3474d3)
+
+User-flow для клиента
+
+![user](https://github.com/user-attachments/assets/19c35be3-b1ef-489f-aa17-91647e3474d3)
+
+User-flow для риэлтора
+
+![realtor](https://github.com/user-attachments/assets/fac1a0e7-ce26-40cc-ba19-5e83e613fdc4)
+
+User-flow для администратора
+
+![admin](https://github.com/user-attachments/assets/4063123e-1427-4ef2-a210-91905df9e520)
+
+### Примеры экранов UI
