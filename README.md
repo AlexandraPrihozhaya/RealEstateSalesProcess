@@ -29,11 +29,11 @@
 
 User-flow для пользователя
 
-![user](https://github.com/user-attachments/assets/19c35be3-b1ef-489f-aa17-91647e3474d3)
+![user](https://github.com/user-attachments/assets/3e9700ae-e5ad-4d4a-9f45-c972a086633e)
 
 User-flow для клиента
 
-![user](https://github.com/user-attachments/assets/19c35be3-b1ef-489f-aa17-91647e3474d3)
+![client](https://github.com/user-attachments/assets/aba98c22-e21e-4293-bd66-f3c81bb0f7ad)
 
 User-flow для риэлтора
 
@@ -41,6 +41,6 @@ User-flow для риэлтора
 
 User-flow для администратора
 
-![admin](https://github.com/user-attachments/assets/4063123e-1427-4ef2-a210-91905df9e520)
+![admin](https://github.com/user-attachments/assets/77d781db-76da-430e-886f-7fa145324dcd)
 
 ### Примеры экранов UI
