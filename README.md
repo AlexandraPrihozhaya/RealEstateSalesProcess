@@ -8,7 +8,6 @@
 Диаграмма контейнеров
 
 ![контейнеры C4 drawio](https://github.com/user-attachments/assets/9f6aa4a4-985d-4e12-83c0-6fdbdd372ae3)
-                                    *Диаграмма контейнеров*
 
 Диаграмма компонентов
 
