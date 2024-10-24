@@ -12,7 +12,7 @@ export const SSlider = styled(Slider)`
 
 export const SSlide = styled.div`
   position: relative;
-  height: 600px;
+  height: 670px;
 `;
 
 export const SSlideContent = styled.div`
