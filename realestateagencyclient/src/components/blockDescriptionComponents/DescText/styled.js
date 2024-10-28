@@ -13,6 +13,7 @@ export const SDiv = styled.div`
 export const SH1 = styled.h1`
     color: #fff;
     font-size: 50px;
+    line-height: 1;
 `;
 
 export const SDivText = styled.div`

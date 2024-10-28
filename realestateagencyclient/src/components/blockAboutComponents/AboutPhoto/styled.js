@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import photo from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/photo1.jpg"
 
 export const SDiv = styled.div`
-    background: url(https://flomaster.top/o/uploads/posts/2023-11/1700668705_flomaster-top-p-serie-tsveti-v-prirode-risunki-vkontakte-3.jpg);
+    background: url(${photo});
     background-size: cover;
     background-repeat: no-repeat;
     width: 50%;

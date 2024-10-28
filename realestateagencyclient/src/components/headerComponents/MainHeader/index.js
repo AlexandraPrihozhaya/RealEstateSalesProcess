@@ -2,6 +2,9 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
 import { SSection, SSlider, SSlide, SSlideContent, STitle, SText, SImage, SArrow, SDots } from './styled';
+import picture1 from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/picture1.jpg"
+import picture2 from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/picture2.jpg"
+import picture3 from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/picture3.jpg"
 
 const MainHeader = () => {
 
@@ -32,7 +35,7 @@ const MainHeader = () => {
             <STitle>Slide 1 Title</STitle>
             <SText>На самом деле жизнь проста, но мы настойчиво её усложняем.</SText>
           </SSlideContent>
-          <SImage src="https://images2.nplod.ru/gen_images/Fp1tJgEVo4IBTTefhttNqD6aufexO2gh.jpg" alt="Slide 1" />
+          <SImage src={picture1} alt="Slide 1" />
         </SSlide>
 
         <SSlide>
@@ -40,7 +43,7 @@ const MainHeader = () => {
             <STitle>Slide 2 Title</STitle>
             <SText>Slide 2 Description</SText>
           </SSlideContent>
-          <SImage src="https://images2.nplod.ru/gen_images/l3dRyhAaqKE7WOTuZ5NCQQqI3SQJeEiV.jpg" alt="Slide 2" />
+          <SImage src={picture2} alt="Slide 2" />
         </SSlide>
 
         <SSlide>
@@ -48,7 +51,7 @@ const MainHeader = () => {
             <STitle>Slide 3 Title</STitle>
             <SText>Slide 3 Description</SText>
           </SSlideContent>
-          <SImage src="https://images2.nplod.ru/gen_images/oGVTKMOCPHbTbZNVCwun92F9hjdnBC1z.jpg" alt="Slide 3" />
+          <SImage src={picture3} alt="Slide 3" />
         </SSlide>
       </SSlider>
     </SSection>

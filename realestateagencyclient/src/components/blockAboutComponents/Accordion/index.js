@@ -12,59 +12,49 @@ const Accordion = () => {
             <SAccordionItem>
                 <SAccordionItemHeading>
                     <SAccordionItemButton>
-                        What harsh truths do you prefer to ignore?
+                        Какими услугами вы занимаетесь?
                     </SAccordionItemButton>
                 </SAccordionItemHeading>
                 <SAccordionItemPanel>
                     <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
+                        Мы предлагаем полный спектр услуг по недвижимости: покупка, 
+                        продажа, аренда, оценка, юридическое сопровождение сделок.
                     </p>
                 </SAccordionItemPanel>
             </SAccordionItem>
             <SAccordionItem>
                 <SAccordionItemHeading>
                     <SAccordionItemButton>
-                        Is free will real or just an illusion?
+                        Как узнать рыночную стоимость моей недвижимости?
                     </SAccordionItemButton>
                 </SAccordionItemHeading>
                 <SAccordionItemPanel>
                     <p>
-                        In ad velit in ex nostrud dolore cupidatat consectetur
-                        ea in ut nostrud velit in irure cillum tempor laboris
-                        sed adipisicing eu esse duis nulla non.
+                        Вы можете заказать бесплатную оценку на нашем сайте или связаться с нами по телефону.
                     </p>
                 </SAccordionItemPanel>
             </SAccordionItem>
             <SAccordionItem>
                 <SAccordionItemHeading>
                     <SAccordionItemButton>
-                        What harsh truths do you prefer to ignore?
+                        Какие документы нужны для продажи квартиры?
                     </SAccordionItemButton>
                 </SAccordionItemHeading>
                 <SAccordionItemPanel>
                     <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
+                        Список необходимых документов вы можете найти на нашем сайте в разделе "Информация".
                     </p>
                 </SAccordionItemPanel>
             </SAccordionItem>
             <SAccordionItem>
                 <SAccordionItemHeading>
                     <SAccordionItemButton>
-                        What harsh truths do you prefer to ignore?
+                        Что делать, если я не нашел нужную недвижимость?
                     </SAccordionItemButton>
                 </SAccordionItemHeading>
                 <SAccordionItemPanel>
                     <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
+                        Вы можете оставить заявку на поиск и мы сообщим вам, как только появится подходящий вариант.
                     </p>
                 </SAccordionItemPanel>
             </SAccordionItem>
