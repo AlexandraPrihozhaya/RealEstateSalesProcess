@@ -20,7 +20,7 @@ const Menu = () => {
         onMouseOver={() => handleMouseOver('catalog')} 
         onMouseLeave={handleMouseLeave} 
       >
-        <SA href='/'>Каталог недвижимости</SA>
+        <SA href='/catalog'>Каталог недвижимости</SA>
         <SDivContent isOpen={openDropdown === 'catalog'}>
           <SADiv href="#">Квартиры</SADiv>
           <SADiv href="#">Дома, коттеджи</SADiv>
@@ -34,7 +34,7 @@ const Menu = () => {
         onMouseOver={() => handleMouseOver('services')} 
         onMouseLeave={handleMouseLeave} 
       >
-        <SA href='/'>Услуги</SA>
+        <SA href='/services'>Услуги</SA>
         <SDivContent isOpen={openDropdown === 'services'}>
           <SADiv href="#">Покупка недвижимости</SADiv>
           <SADiv href="#">Продажа недвижимости</SADiv>
@@ -48,7 +48,7 @@ const Menu = () => {
         onMouseOver={() => handleMouseOver('company')} 
         onMouseLeave={handleMouseLeave}
       >
-        <SA href='/'>О компании</SA>
+        <SA href='/company'>О компании</SA>
         <SDivContent isOpen={openDropdown === 'company'}>
           <SADiv href="#">О нас</SADiv>
           <SADiv href="#">Контакты</SADiv>
@@ -58,7 +58,7 @@ const Menu = () => {
       </SDivDropdown>
 
       <SSpacer></SSpacer>
-      <SA href='/'>Информация</SA>
+      <SA href='/information'>Информация</SA>
       <SSpacer></SSpacer>
       <SA href='/register'>Аккаунт</SA>
     </SSection>
