@@ -1,5 +1,6 @@
 import React from 'react';
 import { SSection, SDivText, SDivPictures, SH1, SText } from './styled';
+import { SSpan } from '../../blockAdvantages/Advantages/styled';
 import Service from '../Service';
 import clock from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/clock.png"
 import security from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/security.png"
@@ -13,7 +14,7 @@ const AllServices = () => {
             Преимущества
         </SH1>
         <SText>
-            Риэлторское агентство "Адрес успеха" предлагает клиентам множество преимуществ
+            Риэлторское агентство <SSpan>Адрес успеха</SSpan> предлагает клиентам множество преимуществ
         </SText>
       </SDivText>
       <SDivPictures>
