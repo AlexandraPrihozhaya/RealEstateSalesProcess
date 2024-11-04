@@ -6,6 +6,9 @@ import BlockDescription from '../../components/blockDescriptionComponents/BlockD
 import BlockAbout from '../../components/blockAboutComponents/BlockAbout';
 import AllServices from '../../components/blockServices/AllServices';
 import RequestForm from '../../components/requestsFormComponents/RequestForm';
+import Footer from '../../components/footerComponents/Footer';
+
+
 
 const MainPage = () => {
   return (
@@ -17,6 +20,7 @@ const MainPage = () => {
       <AllServices />
       <BlockDescription />
       <BlockAbout />
+      <Footer />
     </section>
   );
 };
