@@ -25,7 +25,7 @@ export const SAccordionItemHeading = styled(AccordionItemHeading)`
   border-bottom: 1px solid #ffffff;
   font-weight: 500;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);;
+    background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
 `;

@@ -36,9 +36,9 @@ const Menu = () => {
       >
         <SA href='/services'>Услуги</SA>
         <SDivContent isOpen={openDropdown === 'services'}>
-          <SADiv href="#">Покупка недвижимости</SADiv>
-          <SADiv href="#">Продажа недвижимости</SADiv>
-          <SADiv href="#">Стоимость услуг</SADiv>
+          <SADiv href="/services/buyer">Покупка недвижимости</SADiv>
+          <SADiv href="/services/seller">Продажа недвижимости</SADiv>
+          <SADiv href="/services/price">Стоимость услуг</SADiv>
         </SDivContent>
       </SDivDropdown>
 

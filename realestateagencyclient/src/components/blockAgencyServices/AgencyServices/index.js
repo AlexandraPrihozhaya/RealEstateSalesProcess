@@ -9,9 +9,9 @@ const AgencyServices = () => {
   return (
     <SSection>
       <SDivPictures>
-        <SA href='/buyer'><AgencyService name="Покупка недвижимости" photoUrl={buyer} /></SA>
-        <SA href='/seller'><AgencyService name="Продажа недвижимости" photoUrl={seller} /></SA>
-        <SA href='/price'><AgencyService name="Стоимость услуг" photoUrl={price} /></SA>
+        <SA href='/services/buyer'><AgencyService name="Покупка недвижимости" photoUrl={buyer} /></SA>
+        <SA href='/services/seller'><AgencyService name="Продажа недвижимости" photoUrl={seller} /></SA>
+        <SA href='/services/price'><AgencyService name="Стоимость услуг" photoUrl={price} /></SA>
       </SDivPictures>
     </SSection>
   );
