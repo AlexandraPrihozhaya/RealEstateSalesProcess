@@ -3,6 +3,8 @@ import Header from '../../components/headerComponents/Header';
 import BuyerServices from '../../components/blockServices/BuyerServices';
 import Footer from '../../components/footerComponents/Footer';
 import HelloHeader from '../../components/headerComponents/HelloHeader';
+import BuyerOffers from '../../components/blockServices/BuyerOffers';
+
 
 const BuyerPage = () => {
   return (
@@ -13,6 +15,7 @@ const BuyerPage = () => {
       Наша команда профессионалов с многолетним опытом работы на рынке 
       недвижимости готовы предложить вам качественные услуги и советы на каждом этапе покупки."/>
       <BuyerServices />
+      <BuyerOffers />
       <Footer />
     </section>
   );

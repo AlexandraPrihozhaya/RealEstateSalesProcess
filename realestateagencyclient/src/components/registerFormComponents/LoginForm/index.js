@@ -5,6 +5,7 @@ import { SFormContainer, SForm, SH1, SSocialDiv,
   SOverlayDiv, SOverlayPanelLeft, SOverlayPanelRight, 
   SP, SButtonGhost, SSection, SFormContainerUp, SALogo, SImage } from './styled';
 import logo from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/logo1.png"
+import { Tooltip } from 'react-tooltip'
     
 
 const LoginForm = () => {
@@ -47,9 +48,10 @@ const LoginForm = () => {
     <SSection>
     <SFormContainerUp isSignUp={isSignUpMode}>
       <SForm>
-      <SALogo href='/'>
+      <SALogo href='/' data-tooltip-id="onmain">
         <SImage src={logo}/>
       </SALogo>
+      <Tooltip id="onmain">На главную</Tooltip>
         <SH1>Создать аккаунт</SH1>
         <SSocialDiv>
           <SASocial href="#"><SFaFacebookF></SFaFacebookF></SASocial>
@@ -64,9 +66,10 @@ const LoginForm = () => {
     </SFormContainerUp>
     <SFormContainer isSignUp={isSignUpMode}>
       <SForm>
-      <SALogo href='/'>
+      <SALogo href='/' data-tooltip-id="onmain">
         <SImage src={logo}/>
       </SALogo>
+      <Tooltip id="onmain">На главную</Tooltip>
         <SH1>Войти</SH1>
         <SSocialDiv>
           <SASocial href="#"><SFaFacebookF></SFaFacebookF></SASocial>
