@@ -10,10 +10,10 @@ const AboutCompany = () => {
   return (
     <SSection>
       <SDivPictures>
-        <SA href='/aboutus'><AgencyService name="О нас" photoUrl={aboutus} /></SA>
-        <SA href='/contacts'><AgencyService name="Контакты" photoUrl={contacts} /></SA>
-        <SA href='/advantages'><AgencyService name="Преимущества" photoUrl={advantages} /></SA>
-        <SA href='/reviews'><AgencyService name="Отзывы" photoUrl={reviews} /></SA>
+        <SA href='/company/aboutus'><AgencyService name="О нас" photoUrl={aboutus} /></SA>
+        <SA href='/company/contacts'><AgencyService name="Контакты" photoUrl={contacts} /></SA>
+        <SA href='/company/advantages'><AgencyService name="Преимущества" photoUrl={advantages} /></SA>
+        <SA href='/company/reviews'><AgencyService name="Отзывы" photoUrl={reviews} /></SA>
       </SDivPictures>
     </SSection>
   );

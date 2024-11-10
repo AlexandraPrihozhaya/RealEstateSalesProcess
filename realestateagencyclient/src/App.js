@@ -10,6 +10,7 @@ import Information from './pages/Information';
 import BuyerPage from './pages/BuyerPage';
 import SellerPage from './pages/SellerPage';
 import PricePage from './pages/PricePage';
+import AboutUsPage from './pages/AboutUsPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/services/buyer" element={<BuyerPage />} />
         <Route path="/services/seller" element={<SellerPage />} />
         <Route path="/services/price" element={<PricePage />} />
+        <Route path="/company/aboutus" element={<AboutUsPage />} />
       </Routes>
     </Router>
   );

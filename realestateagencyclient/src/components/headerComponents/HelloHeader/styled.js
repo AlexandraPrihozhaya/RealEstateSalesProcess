@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import pxfuel from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/pxfuel1.jpg"
+import pxfuel from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/pxfuel.jpg"
 
 
 export const SSection = styled.section`

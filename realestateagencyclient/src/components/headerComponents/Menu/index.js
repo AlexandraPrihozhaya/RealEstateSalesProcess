@@ -50,10 +50,10 @@ const Menu = () => {
       >
         <SA href='/company'>О компании</SA>
         <SDivContent isOpen={openDropdown === 'company'}>
-          <SADiv href="#">О нас</SADiv>
-          <SADiv href="#">Контакты</SADiv>
-          <SADiv href="#">Преимущества</SADiv>
-          <SADiv href="#">Отзывы</SADiv>
+          <SADiv href="/company/aboutus">О нас</SADiv>
+          <SADiv href="/company/contacts">Контакты</SADiv>
+          <SADiv href="/company/advantages">Преимущества</SADiv>
+          <SADiv href="/company/reviews">Отзывы</SADiv>
         </SDivContent>
       </SDivDropdown>
 
