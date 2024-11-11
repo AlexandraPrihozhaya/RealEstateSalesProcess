@@ -14,7 +14,6 @@ export const SDivMain = styled.div`
 `;
 
 export const SDiv1 = styled.div`
-  background-color: aliceblue;
   background: #484848;
 `;
 
