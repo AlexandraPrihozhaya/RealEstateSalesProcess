@@ -51,3 +51,12 @@ User-flow для администратора
 
 ![image](https://github.com/user-attachments/assets/45f5f8a5-33b3-4d3f-8a5e-aa5335e0edcc)
 
+![image](https://github.com/user-attachments/assets/f6416eb6-ba76-480a-9cc2-b5d5b1c82861)
+
+![image](https://github.com/user-attachments/assets/b6f5d483-8adb-4bb0-ab57-8c15c5d123a1)
+
+![image](https://github.com/user-attachments/assets/47b7ca14-e444-48fd-a314-7d6abc7f6427)
+
+![image](https://github.com/user-attachments/assets/769ad750-2419-4937-b179-545b40934e08)
+
+![image](https://github.com/user-attachments/assets/19091e14-951f-4a1e-8bce-eb635edad3de)
