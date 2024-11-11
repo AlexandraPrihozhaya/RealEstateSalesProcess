@@ -44,3 +44,6 @@ User-flow для администратора
 ![admin](https://github.com/user-attachments/assets/77d781db-76da-430e-886f-7fa145324dcd)
 
 ### Примеры экранов UI
+
+![image](https://github.com/user-attachments/assets/e9d4c243-5025-4b6b-b7e4-967be2bee9bd)
+
