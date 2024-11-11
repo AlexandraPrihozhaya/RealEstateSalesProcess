@@ -47,3 +47,4 @@ User-flow для администратора
 
 ![image](https://github.com/user-attachments/assets/e9d4c243-5025-4b6b-b7e4-967be2bee9bd)
 
+![image](https://github.com/user-attachments/assets/65738337-1ace-4a08-b683-ba0518471bc7)
