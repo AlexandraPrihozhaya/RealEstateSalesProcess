@@ -10,7 +10,8 @@ export const SSection = styled.section`
 export const SA = styled.a`
   text-transform: uppercase;
   text-decoration: none;
-  color: #000000;
+  color: ${props => props.isActive ? '#ff8a00' : '#000000'};
+  font-weight: ${props => props.isActive ? '500' : ''};
 
   &:hover {
     color: #ff8a00;

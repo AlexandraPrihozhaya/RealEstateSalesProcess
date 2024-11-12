@@ -20,7 +20,7 @@ const Menu = () => {
         onMouseOver={() => handleMouseOver('catalog')} 
         onMouseLeave={handleMouseLeave} 
       >
-        <SA href='/catalog'>Каталог недвижимости</SA>
+        <SA href='/catalog' isActive={window.location.pathname === '/catalog'}>Каталог недвижимости</SA>
         <SDivContent isOpen={openDropdown === 'catalog'}>
           <SADiv href="#">Квартиры</SADiv>
           <SADiv href="#">Дома, коттеджи</SADiv>
@@ -34,7 +34,7 @@ const Menu = () => {
         onMouseOver={() => handleMouseOver('services')} 
         onMouseLeave={handleMouseLeave} 
       >
-        <SA href='/services'>Услуги</SA>
+        <SA href='/services' isActive={window.location.pathname === '/services'}>Услуги</SA>
         <SDivContent isOpen={openDropdown === 'services'}>
           <SADiv href="/services/buyer">Покупка недвижимости</SADiv>
           <SADiv href="/services/seller">Продажа недвижимости</SADiv>
@@ -48,7 +48,7 @@ const Menu = () => {
         onMouseOver={() => handleMouseOver('company')} 
         onMouseLeave={handleMouseLeave}
       >
-        <SA href='/company'>О компании</SA>
+        <SA href='/company' isActive={window.location.pathname === '/company'}>О компании</SA>
         <SDivContent isOpen={openDropdown === 'company'}>
           <SADiv href="/company/aboutus">О нас</SADiv>
           <SADiv href="/company/contacts">Контакты</SADiv>
@@ -58,9 +58,9 @@ const Menu = () => {
       </SDivDropdown>
 
       <SSpacer></SSpacer>
-      <SA href='/information'>Информация</SA>
+      <SA href='/information' isActive={window.location.pathname === '/information'}>Информация</SA>
       <SSpacer></SSpacer>
-      <SA href='/register'>Аккаунт</SA>
+      <SA href='/register' isActive={window.location.pathname === '/register'}>Аккаунт</SA>
     </SSection>
   );
 };

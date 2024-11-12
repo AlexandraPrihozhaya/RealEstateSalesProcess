@@ -2,7 +2,7 @@ import React from 'react';
 import { SSection, SForm, SInput, SButton, SH1 } from './styled';
     
 
-const RequestForm = () => {
+const SellForm = () => {
 
   return (
     <SSection>
@@ -18,4 +18,4 @@ const RequestForm = () => {
   );
 };
 
-export default RequestForm;
+export default SellForm;
