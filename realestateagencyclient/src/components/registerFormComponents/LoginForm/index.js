@@ -3,9 +3,12 @@ import { SFormContainer, SForm, SH1, SSocialDiv,
   SASocial, SFaGoogle, SFaFacebookF, SFaVk, 
   SSpan, SInput, SA, SButton, SOverlayContainer, 
   SOverlayDiv, SOverlayPanelLeft, SOverlayPanelRight, 
-  SP, SButtonGhost, SSection, SFormContainerUp, SALogo, SImage } from './styled';
+  SP, SButtonGhost, SSection, SFormContainerUp, SALogo, SImage, SMessage } from './styled';
 import logo from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/logo1.png"
 import { Tooltip } from 'react-tooltip'
+import { useLocation, useNavigate } from "react-router-dom"
+import { useAuth } from '../../auth/AuthProvider'
+import { registerUser, loginUser } from '../../utils/ApiFunctions';
     
 
 const LoginForm = () => {
@@ -44,10 +47,72 @@ const LoginForm = () => {
   }, []);
 
 
+  const [errorMessageLogin, setErrorMessageLogin] = useState("")
+  const [login, setLogin] = useState({
+    email: "",
+    password: ""
+  })
+
+  const navigate = useNavigate()
+  const auth = useAuth()
+  const location = useLocation()
+  const redirectUrl = location.state?.path || "/"
+
+  const handleInputChangeLogin = (e) => {
+    setLogin({ ...login, [e.target.name]: e.target.value })
+  }
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    const success = await loginUser(login)
+    if (success) {
+      const token = success.token
+      auth.handleLogin(token)
+      navigate(redirectUrl, { replace: true })
+    } else {
+      setErrorMessageLogin("Неверный email или пароль. Пожалуйста, попробуйте еще раз.")
+    }
+    setTimeout(() => {
+      setErrorMessageLogin("")
+    }, 4000)
+  }
+
+
+
+  const [registration, setRegistration] = useState({
+    email: "",
+    password: ""
+  })
+
+  const [errorMessage, setErrorMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState("")
+
+  const handleInputChangeReg = (e) => {
+    setRegistration({ ...registration, [e.target.name]: e.target.value })
+  }
+
+  const handleRegistration = async (e) => {
+    e.preventDefault()
+    try {
+      const result = await registerUser(registration)
+      setSuccessMessage("Вы успешно зарегистрировались")
+      setErrorMessage("")
+      setRegistration({ email: "", password: "" })
+    } catch (error) {
+      setSuccessMessage("")
+      setErrorMessage(`Ошибка регистрации: ${error.message}`)
+    }
+    setTimeout(() => {
+      setErrorMessage("")
+      setSuccessMessage("")
+    }, 5000)
+  }
+
+
   return (
     <SSection>
     <SFormContainerUp isSignUp={isSignUpMode}>
-      <SForm>
+      <SForm onSubmit={handleRegistration}>
       <SALogo href='/' data-tooltip-id="onmain">
         <SImage src={logo}/>
       </SALogo>
@@ -59,13 +124,14 @@ const LoginForm = () => {
           <SASocial href="#"><SFaVk></SFaVk></SASocial>
         </SSocialDiv>
         <SSpan>или используйте свой аккаунт</SSpan>
-        <SInput type="email" placeholder="Email" />
-        <SInput type="password" placeholder="Пароль" />
-        <SButton>Зарегистрироваться</SButton>
+        <SInput id="emailReg" name="email" type="email" placeholder="Email" value={registration.email} onChange={handleInputChangeReg}/>
+        <SInput id="passwordReg" name="password" type="password" placeholder="Пароль" value={registration.password} onChange={handleInputChangeReg}/>
+        <SButton type='submit'>Зарегистрироваться</SButton>
+        <SMessage>{successMessage}</SMessage>
       </SForm>
     </SFormContainerUp>
     <SFormContainer isSignUp={isSignUpMode}>
-      <SForm>
+      <SForm onSubmit={handleLogin}>
       <SALogo href='/' data-tooltip-id="onmain">
         <SImage src={logo}/>
       </SALogo>
@@ -77,10 +143,10 @@ const LoginForm = () => {
           <SASocial href="#"><SFaVk></SFaVk></SASocial>
         </SSocialDiv>
         <SSpan>или используйте свой аккаунт</SSpan>
-        <SInput type="email" placeholder="Email" />
-        <SInput type="password" placeholder="Пароль" />
+        <SInput id="emailLogin" name="email" type="email" placeholder="Email" value={login.email} onChange={handleInputChangeLogin}/>
+        <SInput id="passwordLogin" name="password" type="password" placeholder="Пароль" value={login.password} onChange={handleInputChangeLogin}/>
         <SA href="#">Забыли пароль?</SA>
-        <SButton>Войти</SButton>
+        <SButton type='submit'>Войти</SButton>
       </SForm>
     </SFormContainer>
     <SOverlayContainer isSignUp={isSignUpMode}>

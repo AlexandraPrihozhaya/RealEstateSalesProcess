@@ -29,3 +29,32 @@ export async function getAllUsers() {
     throw new Error(`Error fetching users: ${error.message}`)
   }
 }
+
+//есть
+export async function registerUser(registration) {
+	try {
+		const response = await axios.post("http://localhost:8080/auth/register", registration)
+		return response.data
+	} catch (error) {
+		if (error.response && error.response.data) {
+			throw new Error(error.response.data)
+		} else {
+			throw new Error(`User registration error : ${error.message}`)
+		}
+	}
+}
+
+//есть
+export async function loginUser(login) {
+	try {
+		const response = await axios.post("http://localhost:8080/auth/login", login)
+		if (response.status >= 200 && response.status < 300) {
+			return response.data
+		} else {
+			return null
+		}
+	} catch (error) {
+		console.error(error)
+		return null
+	}
+}

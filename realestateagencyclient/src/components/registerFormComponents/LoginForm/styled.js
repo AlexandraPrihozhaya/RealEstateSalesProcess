@@ -231,3 +231,9 @@ export const SALogo = styled.a`
 export const SImage = styled.img`
   height: 64px;
 `;
+
+export const SMessage = styled.text`
+  font-size: 18px;
+  font-weight: 500;
+  color: #c45200;
+`;

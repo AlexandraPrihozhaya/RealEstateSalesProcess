@@ -37,48 +37,7 @@
   }
 }
 
-.tb {
-  padding: 40px 200px;
-}
-
-.table {
-  width: 100%;
-  margin-bottom: 20px;
-  border: 5px solid #fff;
-  border-top: 5px solid #fff;
-  border-bottom: 3px solid #fff;
-  border-collapse: collapse; 
-  outline: 3px solid #ff8a00;
-  font-size: 15px;
-  background: #fff!important;
-}
-.table th {
-  font-weight: bold;
-  padding: 7px;
-  background: #ff8a00;
-  border: none;
-  text-align: left;
-  font-size: 15px;
-  border-top: 3px solid #fff;
-  border-bottom: 3px solid #ff8a00;
-}
-.table td {
-  padding: 7px;
-  border: none;
-  border-top: 3px solid #fff;
-  border-bottom: 3px solid #fff;
-  font-size: 15px;
-}
-.table tbody tr:nth-child(even){
-  background: #f8f8f8!important;
-}
-
-/* Подсветка строк при наведении */
-.table tbody tr:hover {
-  background-color: #f2f2f2; /* Светло-серый фон */
-}
-
-/* Подсветка ячеек при наведении */
-.table tbody tr:hover td {
-  background-color: #f2f2f2; /* Светло-серый фон */
+.imgs {
+  width: 40px;
+  margin: 0 10px;
 }
