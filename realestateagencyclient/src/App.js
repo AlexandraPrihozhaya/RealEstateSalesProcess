@@ -13,6 +13,7 @@ import PricePage from './pages/PricePage';
 import AboutUsPage from './pages/AboutUsPage';
 import Advantages from './pages/Advantages';
 import { AuthProvider } from './components/auth/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 function App() {

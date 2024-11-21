@@ -1,6 +1,6 @@
 import React from 'react';
 import { SSection, SH2, SP, SDivTeam, SDivTeamMember, SImage, SH3, SText } from './styled';
-
+import Breadcrumbs from '../../breadcrumbs/Breadcrumbs';
 const OurTeam = () => {
     
   return (
