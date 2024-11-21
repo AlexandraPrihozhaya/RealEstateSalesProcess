@@ -13,7 +13,7 @@ import PricePage from './pages/PricePage';
 import AboutUsPage from './pages/AboutUsPage';
 import Advantages from './pages/Advantages';
 import { AuthProvider } from './components/auth/AuthProvider';
-import { Link } from 'react-router-dom';
+import Reviews from './pages/Reviews';
 
 
 function App() {
@@ -32,6 +32,7 @@ function App() {
           <Route path="/services/price" element={<PricePage />} />
           <Route path="/company/aboutus" element={<AboutUsPage />} />
           <Route path="/company/advantages" element={<Advantages />} />
+          <Route path="/company/reviews" element={<Reviews />} />
         </Routes>
       </Router>
     </AuthProvider>

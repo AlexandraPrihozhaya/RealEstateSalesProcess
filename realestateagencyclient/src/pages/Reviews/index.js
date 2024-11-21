@@ -1,23 +1,22 @@
 import React from 'react';
 import Header from '../../components/headerComponents/Header';
-import AllServices from '../../components/blockServices/AllServices';
+import Footer from '../../components/footerComponents/Footer';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 
-const Information = () => {
+const Reviews = () => {
   return (
     <section>
       <Header />
-
       <Breadcrumbs
         links={[
           { path: "/", label: "Главная" },
-          { path: "/information", label: "Информация" },
+          { path: "/company", label: "О компании" },
+          { path: "/company/reviews", label: "Отзывы" },
         ]}
       />
-
-      <AllServices />
+      <Footer />
     </section>
   );
 };
 
-export default Information;
+export default Reviews;
