@@ -4,7 +4,6 @@ export const SDiv = styled.div`
   width: 360px;
 `;
 
-
 export const SImage = styled.img`
   display: block;
 	margin-left: auto;

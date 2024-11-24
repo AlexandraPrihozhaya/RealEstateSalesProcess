@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { SSection, SA, SSpacer, SDivDropdown, SDivContent, SADiv } from './styled';
+import Logout from '../Logout';
 
 
 const Menu = () => {
@@ -14,12 +15,22 @@ const Menu = () => {
     setOpenDropdown(null);
   };
 
+  const [showAccount, setShowAccount] = useState(false)
+
+  const handleAccountClick = () => {
+    setShowAccount(!showAccount)
+  }
+
+  const isLoggedIn = localStorage.getItem("token")
+
+
   return (
     <SSection>
       <SDivDropdown 
         onMouseOver={() => handleMouseOver('catalog')} 
         onMouseLeave={handleMouseLeave} 
       >
+
         <SA href='/catalog' isActive={window.location.pathname === '/catalog'}>Каталог недвижимости</SA>
         <SDivContent isOpen={openDropdown === 'catalog'}>
           <SADiv href="#">Квартиры</SADiv>
@@ -60,7 +71,40 @@ const Menu = () => {
       <SSpacer></SSpacer>
       <SA href='/information' isActive={window.location.pathname === '/information'}>Информация</SA>
       <SSpacer></SSpacer>
-      <SA href='/register' isActive={window.location.pathname === '/register'}>Аккаунт</SA>
+
+
+      {/* <SDivDropdown 
+        onMouseOver={() => handleMouseOver('account')} 
+        onMouseLeave={handleMouseLeave}
+      >
+        <SA className={nav-link dropdown-toggle ${showAccount ? "show" : ""}} onClick={handleAccountClick}>Аккаунт</SA>
+        <SDivContent isOpen={openDropdown === 'account'}>
+
+          {isLoggedIn ? (
+          <Logout />
+        ) : (
+            <SADiv href='/register'>
+              Вход
+            </SADiv>
+        )}
+        </SDivContent>
+      </SDivDropdown> */}
+
+      {isLoggedIn ? (
+        <SDivDropdown 
+          onMouseOver={() => handleMouseOver('account')} 
+          onMouseLeave={handleMouseLeave}
+        >
+        <SA className={`nav-link dropdown-toggle ${showAccount ? "show" : ""}`} onClick={handleAccountClick}>Аккаунт</SA>
+        <SDivContent isOpen={openDropdown === 'account'}>
+          <Logout />
+
+          </SDivContent>
+          </SDivDropdown>
+        ): (
+          <SA href='/register' isActive={window.location.pathname === '/register'}>Войти</SA>
+      )}
+      
     </SSection>
   );
 };

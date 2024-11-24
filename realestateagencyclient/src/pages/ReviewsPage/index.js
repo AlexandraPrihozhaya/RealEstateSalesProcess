@@ -2,8 +2,10 @@ import React from 'react';
 import Header from '../../components/headerComponents/Header';
 import Footer from '../../components/footerComponents/Footer';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import Reviews from '../../components/blockReviewsComponents/Reviews';
 
-const Reviews = () => {
+const ReviewsPage = () => {
+
   return (
     <section>
       <Header />
@@ -14,9 +16,10 @@ const Reviews = () => {
           { path: "/company/reviews", label: "Отзывы" },
         ]}
       />
+      <Reviews />
       <Footer />
     </section>
   );
 };
 
-export default Reviews;
+export default ReviewsPage;

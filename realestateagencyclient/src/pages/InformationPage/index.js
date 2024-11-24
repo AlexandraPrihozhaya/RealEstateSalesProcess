@@ -1,9 +1,10 @@
 import React from 'react';
 import Header from '../../components/headerComponents/Header';
-import AllServices from '../../components/blockServices/AllServices';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import Footer from '../../components/footerComponents/Footer';
+import Information from '../../components/informationComponents/Information';
 
-const Information = () => {
+const InformationPage = () => {
   return (
     <section>
       <Header />
@@ -15,9 +16,10 @@ const Information = () => {
         ]}
       />
 
-      <AllServices />
+      <Information />
+      <Footer />
     </section>
-  );
+  );  
 };
 
-export default Information;
+export default InformationPage;
