@@ -34,7 +34,6 @@ const LoginForm = () => {
     }
 
     return () => {
-      // Очистка обработчиков событий при размонтировании компонента
       if (signUpButton && signInButton && container) {
         signUpButton.removeEventListener('click', () =>
           container.classList.add('right-panel-active')

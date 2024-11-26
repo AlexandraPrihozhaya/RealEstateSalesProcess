@@ -65,8 +65,8 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<Optional<UserResponse>> getUserById(@PathVariable Long userId) {
+    @GetMapping("/user-id-{userId}")
+    public ResponseEntity<Optional<UserResponse>> getUserById(@PathVariable("userId") Long userId) {
         Optional<User> theUser = userService.getUserById(userId);
         return theUser.map(user -> {
             UserResponse userResponse = getUserResponse(user);
@@ -78,5 +78,4 @@ public class UserController {
 
         return new UserResponse(user.getId(), user.getEmail(), user.getRoles());
     }
-
 }

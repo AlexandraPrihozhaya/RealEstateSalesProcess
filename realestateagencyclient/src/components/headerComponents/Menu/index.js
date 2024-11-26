@@ -72,24 +72,6 @@ const Menu = () => {
       <SA href='/information' isActive={window.location.pathname === '/information'}>Информация</SA>
       <SSpacer></SSpacer>
 
-
-      {/* <SDivDropdown 
-        onMouseOver={() => handleMouseOver('account')} 
-        onMouseLeave={handleMouseLeave}
-      >
-        <SA className={nav-link dropdown-toggle ${showAccount ? "show" : ""}} onClick={handleAccountClick}>Аккаунт</SA>
-        <SDivContent isOpen={openDropdown === 'account'}>
-
-          {isLoggedIn ? (
-          <Logout />
-        ) : (
-            <SADiv href='/register'>
-              Вход
-            </SADiv>
-        )}
-        </SDivContent>
-      </SDivDropdown> */}
-
       {isLoggedIn ? (
         <SDivDropdown 
           onMouseOver={() => handleMouseOver('account')} 

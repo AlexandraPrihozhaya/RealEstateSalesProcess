@@ -16,6 +16,36 @@ export const getHeader = () => {
   }
 }
 
+//
+export async function registerUser(registration) {
+  try {
+    const response = await axios.post("http://localhost:8080/auth/register", registration);
+    return response.data
+  } catch (error) {
+    if (error.response && error.response.data) {
+      throw new Error(error.response.data)
+    } else {
+      throw new Error(`User registration error : ${error.message}`)
+    }
+  }
+}
+
+//
+export async function loginUser(login) {
+  try {
+    const response = await axios.post("http://localhost:8080/auth/login", login)
+    if (response.status >= 200 && response.status < 300) {
+      return response.data
+    } else {
+      return null
+    }
+  } catch (error) {
+    console.error(error)
+    return null
+  }
+}
+
+//
 export async function getAllUsers() {
   try {
     const result = await axios.get("http://localhost:8080/users/all", {
@@ -30,31 +60,26 @@ export async function getAllUsers() {
   }
 }
 
-//есть
-export async function registerUser(registration) {
-	try {
-		const response = await axios.post("http://localhost:8080/auth/register", registration)
-		return response.data
-	} catch (error) {
-		if (error.response && error.response.data) {
-			throw new Error(error.response.data)
-		} else {
-			throw new Error(`User registration error : ${error.message}`)
-		}
-	}
+//
+export async function deleteUser(userId) {
+  try {
+    const response = await axios.delete(`http://localhost:8080/users/delete/${userId}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    return error.message
+  }
 }
 
-//есть
-export async function loginUser(login) {
-	try {
-		const response = await axios.post("http://localhost:8080/auth/login", login)
-		if (response.status >= 200 && response.status < 300) {
-			return response.data
-		} else {
-			return null
-		}
-	} catch (error) {
-		console.error(error)
-		return null
-	}
+//
+export async function getUserById(userId) {
+  try {
+    const response = await axios.get(`http://localhost:8080/users/user-id-${userId}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    throw error
+  }
 }

@@ -15,6 +15,7 @@ export const SA = styled.a`
 
   &:hover {
     color: #ff8a00;
+    cursor: pointer;
   }
 `;
 

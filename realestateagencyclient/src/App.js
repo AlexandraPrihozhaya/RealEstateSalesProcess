@@ -14,7 +14,8 @@ import AboutUsPage from './pages/AboutUsPage';
 import Advantages from './pages/Advantages';
 import { AuthProvider } from './components/auth/AuthProvider';
 import ReviewsPage from './pages/ReviewsPage';
-
+import AdminUsersPage from './pages/AdminUsersPage';
+import AdminUserPage from './pages/AdminUserPage';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
           <Route path="/company/aboutus" element={<AboutUsPage />} />
           <Route path="/company/advantages" element={<Advantages />} />
           <Route path="/company/reviews" element={<ReviewsPage />} />
+          <Route path="/admin/users" element={<AdminUsersPage />} />
+          <Route path="/admin/users/:userId" element={<AdminUserPage />} />
         </Routes>
       </Router>
     </AuthProvider>
