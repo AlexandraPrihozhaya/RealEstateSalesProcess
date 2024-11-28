@@ -62,3 +62,30 @@ User-flow для администратора
 ![image](https://github.com/user-attachments/assets/769ad750-2419-4937-b179-545b40934e08)
 
 ![image](https://github.com/user-attachments/assets/19091e14-951f-4a1e-8bce-eb635edad3de)
+
+## Безопасность
+
+Пароли в базе данных хранятся в зашифрованном виде
+
+![image](https://github.com/user-attachments/assets/85f0e59c-4321-4c30-b022-37c99c138a2c)
+
+В системе есть разграничение прав доступа, то есть реализовано разделение по ролям.
+Аутентификация и авторизация реализованы с помощью Spring Security и JWT-токенов. 
+Код ниже на Java представляет собой конфигурацию безопасности Spring Security для веб-приложения.
+
+`public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http.csrf(AbstractHttpConfigurer :: disable)
+            .exceptionHandling(
+                    exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/auth/**")
+                    .permitAll().requestMatchers("/roles/**").hasRole("ADMIN")
+                    .anyRequest().authenticated());
+    http.authenticationProvider(authenticationProvider());
+    http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+    return http.build();
+}`
+
+
+
