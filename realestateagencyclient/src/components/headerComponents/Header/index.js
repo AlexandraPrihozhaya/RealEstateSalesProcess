@@ -6,18 +6,13 @@ import logo from "D:/Документы/БГУИР/8 сем/дипломный �
 
 const Header = () => {
 
-  
-  const userRole = localStorage.getItem("userRole")
-
   return (
     <SSection>
       <SA href='/'>
         <SImage src={logo}/>
       </SA>
 
-      {userRole !== "ROLE_MANAGER" && (
-        <Menu />
-      )}
+      <Menu />
 
     </SSection>
   );

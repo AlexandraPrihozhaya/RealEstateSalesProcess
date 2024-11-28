@@ -16,6 +16,7 @@ import { AuthProvider } from './components/auth/AuthProvider';
 import ReviewsPage from './pages/ReviewsPage';
 import AdminUsersPage from './pages/AdminUsersPage';
 import AdminUserPage from './pages/AdminUserPage';
+import RealtorLeadsPage from './pages/RealtorLeadsPage';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/company/reviews" element={<ReviewsPage />} />
           <Route path="/admin/users" element={<AdminUsersPage />} />
           <Route path="/admin/users/:userId" element={<AdminUserPage />} />
+          <Route path="/realtor/leads" element={<RealtorLeadsPage />} />
         </Routes>
       </Router>
     </AuthProvider>

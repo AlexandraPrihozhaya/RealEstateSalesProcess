@@ -9,6 +9,7 @@ import AllServices from '../../components/blockServices/AllServices';
 import Footer from '../../components/footerComponents/Footer';
 import MoreReviews from '../../components/blockReviewsComponents/MoreReviews';
 import AdminMain from '../../components/adminComponents/AdminMain';
+import RealtorMain from '../../components/realtorComponents/RealtorMain';
 
 const MainPage = () => {
 
@@ -16,7 +17,7 @@ const MainPage = () => {
 
   return (
     <>
-    {userRole !== "ROLE_ADMIN" && ( 
+    {userRole !== "ROLE_ADMIN" && userRole !== "ROLE_REALTOR" && ( 
     <section>
       <Header />
       <MainHeader />
@@ -33,6 +34,12 @@ const MainPage = () => {
     {userRole === "ROLE_ADMIN" && ( 
       <section>
         <AdminMain />
+      </section>
+      )}
+
+    {userRole === "ROLE_REALTOR" && ( 
+      <section>
+        <RealtorMain />
       </section>
       )}
 </>

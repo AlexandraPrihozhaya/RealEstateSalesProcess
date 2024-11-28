@@ -28,7 +28,7 @@ public class UserService implements IUserService {
             throw new UserAlreadyExistsException(user.getEmail() + " уже существует");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByName("ROLE_USER").get();
+        Role userRole = roleRepository.findByName("ROLE_REALTOR").get();
         user.setRoles(Collections.singletonList(userRole));
         return userRepository.save(user);
     }
