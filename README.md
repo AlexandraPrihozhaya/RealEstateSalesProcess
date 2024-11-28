@@ -65,15 +65,12 @@ User-flow для администратора
 
 ## Безопасность
 
-Пароли в базе данных хранятся в зашифрованном виде
-
-![image](https://github.com/user-attachments/assets/85f0e59c-4321-4c30-b022-37c99c138a2c)
-
 В системе есть разграничение прав доступа, то есть реализовано разделение по ролям.
 Аутентификация и авторизация реализованы с помощью Spring Security и JWT-токенов. 
 Код ниже на Java представляет собой конфигурацию безопасности Spring Security для веб-приложения.
 
-`public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+```ruby
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.csrf(AbstractHttpConfigurer :: disable)
             .exceptionHandling(
                     exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint))
@@ -85,7 +82,54 @@ User-flow для администратора
     http.authenticationProvider(authenticationProvider());
     http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     return http.build();
-}`
+}
+```
 
+Ниже представлен метод, генерирующий токены.
 
+```ruby
+public String generateJwtTokenForUser(Authentication authentication){
+    AgencyUserDetails userPrincipal = (AgencyUserDetails) authentication.getPrincipal();
+    List<String> roles = userPrincipal.getAuthorities()
+            .stream()
+            .map(GrantedAuthority::getAuthority).toList();
+    return Jwts.builder()
+            .setSubject(userPrincipal.getUsername())
+            .claim("roles", roles)
+            .setIssuedAt(new Date())
+            .setExpiration(new Date((new Date()).getTime()+jwtExpirationMs))
+            .signWith(key(), SignatureAlgorithm.HS256).compact();
+}
+```
 
+Когда пользователь входит в систему, сервер проверяет его учетные данные и, если они действительны, создает и подписывает JWT-токен. Этот токен содержит информацию о пользователе, такую как его email и пароль.
+
+```ruby
+@PostMapping("/login")
+public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest request){
+    Authentication authentication =
+            authenticationManager
+                    .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+    String jwt = jwtUtils.generateJwtTokenForUser(authentication);
+    AgencyUserDetails userDetails = (AgencyUserDetails) authentication.getPrincipal();
+    List<String> roles = userDetails.getAuthorities()
+            .stream()
+            .map(GrantedAuthority::getAuthority).toList();
+    return ResponseEntity.ok(new JwtResponse(
+            userDetails.getId(),
+            userDetails.getEmail(),
+            jwt,
+            roles));
+}
+```
+
+Шифрование пароля реализовано с помощью кодировщика паролей `PasswordEncoder`.
+
+```ruby
+user.setPassword(passwordEncoder.encode(user.getPassword()));
+```
+
+Так, пароли в базе данных хранятся в зашифрованном виде.
+
+![image](https://github.com/user-attachments/assets/85f0e59c-4321-4c30-b022-37c99c138a2c)
