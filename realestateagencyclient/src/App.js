@@ -17,6 +17,10 @@ import ReviewsPage from './pages/ReviewsPage';
 import AdminUsersPage from './pages/AdminUsersPage';
 import AdminUserPage from './pages/AdminUserPage';
 import RealtorLeadsPage from './pages/RealtorLeadsPage';
+import Contacts from './pages/Contacts';
+import RealtorAccountPage from './pages/RealtorAccountPage';
+import AdminRealtorsPage from './pages/AdminRealtorsPage';
+import AdminRealtorPage from './pages/AdminRealtorPage';
 
 function App() {
   return (
@@ -35,9 +39,13 @@ function App() {
           <Route path="/company/aboutus" element={<AboutUsPage />} />
           <Route path="/company/advantages" element={<Advantages />} />
           <Route path="/company/reviews" element={<ReviewsPage />} />
+          <Route path="/company/contacts" element={<Contacts />} />
           <Route path="/admin/users" element={<AdminUsersPage />} />
+          <Route path="/admin/realtors" element={<AdminRealtorsPage />} />
           <Route path="/admin/users/:userId" element={<AdminUserPage />} />
           <Route path="/realtor/leads" element={<RealtorLeadsPage />} />
+          <Route path="/realtor/account" element={<RealtorAccountPage />} />
+          <Route path="/admin/realtors/:realtorId" element={<AdminRealtorPage />} />
         </Routes>
       </Router>
     </AuthProvider>

@@ -24,7 +24,7 @@ export const SA = styled.a`
 `;
 
 export const SSpacer = styled.span`
-  margin-bottom: 320px;
+  margin-bottom: 270px;
 `;
 
 export const SImage = styled.img`

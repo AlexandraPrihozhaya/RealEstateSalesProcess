@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { SSection, SPaginationContainer, SDivPages, SDivCount, 
     SDivList, SText, SSelect, SOption, SButton, STable, SThead, 
     STr, STh, STbody, STd, SUl, SLi, STextRole, SButtonTask, 
-    SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink } from './styled';
+    SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink, SButtonAdd, SDivPagBut } from './styled';
 import { GrPrevious, GrNext } from "react-icons/gr";
-import { getAllUsers, deleteUser } from '../../utils/ApiFunctions';
+import { getAllUsers, deleteUser, updateUser } from '../../utils/ApiFunctions';
 import { SiQuicklook } from "react-icons/si";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -97,9 +97,27 @@ const handleDelete = async (userId) => {
     setIsModalOpen(false);
   };
 
+  const handleUpdate = async (userId) => {
+    try {
+        const result = await updateUser(userId)
+        if (result === "User updated successfully") {
+            setSuccessMessage(`User with email ${userId} was update`)
+            fetchUsers();
+        } else {
+            console.error(`Error updating user : ${result.message}`)
+        }
+    } catch (error) {
+        setErrorMessage(error.message)
+    }
+    setTimeout(() => {
+        setSuccessMessage("")
+        setErrorMessage("")
+    }, 3000)
+  }
+
   return (
     <>
-      <SSection isModalOpen={isModalOpen}>
+      <SSection>
         <div>
          {successMessage && <p>{successMessage}</p>}
 
@@ -109,6 +127,7 @@ const handleDelete = async (userId) => {
          <text>Загрузка данных...</text>
        ) : (
         <>
+        <SDivPagBut>
         <SPaginationContainer>
             <SDivPages>
             <SText>Строк на странице:</SText>
@@ -125,6 +144,8 @@ const handleDelete = async (userId) => {
                 <SButton onClick={handleNextPage}><GrNext /></SButton>
             </SDivList>
         </SPaginationContainer>
+        <SButtonAdd>Добавить пользователя</SButtonAdd>
+        </SDivPagBut>
         <STable>
             <SThead>
                 <STr>
@@ -145,8 +166,8 @@ const handleDelete = async (userId) => {
                                         {role.name === "ROLE_USER" && (
                                             <STextRole>Пользователь</STextRole>
                                         )}
-                                        {role.name === "ROLE_MANAGER" && (
-                                            <STextRole>Менеджер</STextRole>
+                                        {role.name === "ROLE_REALTOR" && (
+                                            <STextRole>Риэлтор</STextRole>
                                         )}
                                         {role.name === "ROLE_ADMIN" && (
                                             <STextRole>Администратор</STextRole>
@@ -159,7 +180,7 @@ const handleDelete = async (userId) => {
                         <SButtonTask><SLink to={`/admin/users/${user.id}`}><SiQuicklook /></SLink></SButtonTask>
                         </STd>
                         <STd>
-                            <SButtonTask><FaEdit /></SButtonTask>
+                            <SButtonTask onClick={() => handleUpdate(user.email)}><FaEdit /></SButtonTask>
                         </STd>
                         <STd>
                             <SButtonTask onClick={() => handleDelete(user.email)}><MdDelete /></SButtonTask>

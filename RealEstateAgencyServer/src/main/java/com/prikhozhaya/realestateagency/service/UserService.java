@@ -28,7 +28,7 @@ public class UserService implements IUserService {
             throw new UserAlreadyExistsException(user.getEmail() + " уже существует");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByName("ROLE_REALTOR").get();
+        Role userRole = roleRepository.findByName("ROLE_USER").get();
         user.setRoles(Collections.singletonList(userRole));
         return userRepository.save(user);
     }
@@ -80,5 +80,20 @@ public class UserService implements IUserService {
         if(theUser.isPresent()){
             userRepository.deleteById(userId);
         }
+    }
+
+    @Override
+    public User updateUserEmail(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        Role userRole = roleRepository.findByName("ROLE_USER").get();
+        Role realtorRole = roleRepository.findByName("ROLE_REALTOR").get();
+        if (!user.getRoles().contains(userRole)) {
+            userRole.assignRoleToUser(user);
+            realtorRole.removeUserFromRole(user);
+        } else {
+            realtorRole.assignRoleToUser(user);
+            userRole.removeUserFromRole(user);
+        }
+        return userRepository.save(user);
     }
 }

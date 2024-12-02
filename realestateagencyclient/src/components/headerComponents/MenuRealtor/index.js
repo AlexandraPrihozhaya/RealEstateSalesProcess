@@ -24,6 +24,7 @@ const MenuRealtor = () => {
       </SA>
       
       <SADiv>
+        <SA href='/realtor/account' isActive={window.location.pathname === '/realtor/account'}>Профиль</SA>
         <SA href='/realtor/leads' isActive={window.location.pathname === '/realtor/leads'}>Лиды</SA>
         <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Клиенты</SA>
         <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Заявки</SA>

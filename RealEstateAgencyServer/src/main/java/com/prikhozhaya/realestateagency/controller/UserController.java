@@ -23,7 +23,6 @@ public class UserController {
     @GetMapping("/all")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<User>> getUsers(){
-
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.FOUND);
     }
 
@@ -52,11 +51,11 @@ public class UserController {
         }
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> updateUser(@RequestBody User user) {
         try {
-            userService.registerUser(user);
+            userService.updateUserEmail(user.getEmail());
             return ResponseEntity.ok("User updated successfully");
         } catch (UsernameNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

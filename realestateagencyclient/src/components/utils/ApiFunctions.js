@@ -83,3 +83,60 @@ export async function getUserById(userId) {
     throw error
   }
 }
+
+//
+export async function getAllRealtors() {
+  try {
+    const result = await axios.get("http://localhost:8080/realtors/all", {
+            headers: getHeader(),
+            validateStatus: () => {
+              return true;
+            }
+        })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching realtors: ${error.message}`)
+  }
+}
+
+//
+export async function getRealtorById(realtorId) {
+  try {
+    const response = await axios.get(`http://localhost:8080/realtors/realtor-id-${realtorId}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+//
+export async function deleteRealtor(realtorId) {
+  try {
+    const response = await axios.delete(`http://localhost:8080/realtors/delete/${realtorId}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    return error.message
+  }
+}
+
+//
+export async function updateUser(userId) {
+  try {
+    const formData = new FormData()
+    formData.append("email", userId)
+    const response = await axios.put("http://localhost:8080/users/update", formData, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    if (error.response && error.response.data) {
+      throw new Error(error.response.data)
+    } else {
+      throw new Error(`User updating error : ${error.message}`)
+    }
+  }
+}

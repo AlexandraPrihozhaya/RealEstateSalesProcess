@@ -56,8 +56,8 @@ useEffect(() => {
                     {role.name === "ROLE_USER" && (
                       <SText>Пользователь</SText>
                       )}
-                    {role.name === "ROLE_MANAGER" && (
-                      <SText>Менеджер</SText>
+                    {role.name === "ROLE_REALTOR" && (
+                      <SText>Риэлтор</SText>
                       )}
                     {role.name === "ROLE_ADMIN" && (
                       <SText>Администратор</SText>

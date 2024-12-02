@@ -24,7 +24,7 @@ export const SA = styled.a`
 `;
 
 export const SSpacer = styled.span`
-  margin-bottom: 420px;
+  margin-bottom: 400px;
 `;
 
 export const SImage = styled.img`
@@ -39,4 +39,11 @@ export const SExit = styled.div`
 export const SIoMdExit = styled(IoMdExit)`
   font-size: 21px;
   margin-left: 4px;
+`;
+
+export const SADiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
 `;

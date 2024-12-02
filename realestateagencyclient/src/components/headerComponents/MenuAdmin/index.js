@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { AuthContext } from "../../auth/AuthProvider"
 import {useNavigate } from "react-router-dom"
-import { SSection, SA, SSpacer, SImage, SExit, SIoMdExit, } from './styled';
+import { SSection, SA, SSpacer, SImage, SExit, SIoMdExit, SADiv } from './styled';
 import logo from "D:/Документы/БГУИР/8 сем/дипломный проект/RealEstateSalesProcess/realestateagencyclient/src/assets/logo_footer.png"
 
 
@@ -23,7 +23,13 @@ const MenuAdmin = () => {
         <SImage src={logo}/>
       </SA>
       
-      <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Пользователи</SA>
+
+      <SADiv>
+        <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Пользователи</SA>
+        <SA href='/admin/realtors' isActive={window.location.pathname === '/admin/realtors'}>Риэлторы</SA>
+      </SADiv>
+
+
       <SSpacer></SSpacer>
       <SA onClick={handleLogout}>
         <SExit>Выйти <SIoMdExit /></SExit>

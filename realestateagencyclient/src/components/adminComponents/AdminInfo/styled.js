@@ -7,7 +7,6 @@ export const SSection = styled.section`
 `;
 
 export const SPaginationContainer = styled.div`
-    padding-bottom: 10px;
     display: flex;
     flex-direction: row;
     right: 0;
@@ -191,4 +190,37 @@ margin: 15px 0;
 
 export const SLink = styled(Link)`
     color: #000000;
+`;
+
+export const SButtonAdd = styled.button`
+  border-radius: 10px;
+  border: 1px solid #ff8a00;
+  background: #ff8a00;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(.95);
+  }
+`;
+
+export const SDivPagBut = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 `;
