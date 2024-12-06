@@ -555,6 +555,7 @@ components:
           example: ROLE_ADMIN
 ```
 
+[Файл с документацией для Postman](https://github.com/AlexandraPrihozhaya/RealEstateSalesProcess/blob/6a0dea914818672af175492103ba9fa2720e8617/openapi.json)
 
 
 
