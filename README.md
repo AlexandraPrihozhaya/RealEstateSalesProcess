@@ -23,6 +23,38 @@
 
 ![image_2024-10-21_12-09-37](https://github.com/user-attachments/assets/95664975-de2c-4497-b808-54a9668e826e)
 
+Диаграмма развертывания
+
+![image_2024-11-29_17-42-10](https://github.com/user-attachments/assets/a5bc7695-da4f-45fa-9e16-7b9b56058d9e)
+
+Диаграмма классов
+
+![диаграмма классов drawio](https://github.com/user-attachments/assets/c8a8220a-1fe4-4db9-9b01-df907d9cc539)
+
+Диаграмма состояний заявки на покупку/продажу объекта жилой недвижимости
+
+![Untitled](https://github.com/user-attachments/assets/540d16d9-c0c8-400d-b50a-09753544929f)
+
+Диаграмма последовательности процесса «Подать заявку на покупку объекта недвижимости»
+
+![диаграмма последовательности](https://github.com/user-attachments/assets/a0da2a92-5de8-4a4f-bc18-331004dce98f)
+
+Диаграмма прецедентов (вариантов использования)
+
+![Untitled (5)](https://github.com/user-attachments/assets/d04edbeb-3684-46b1-a7d5-95cf419dbac3)
+
+Диаграмма деятельности процесса «Добавить объявление о продаже»
+
+![диаграмма деятельности (1)](https://github.com/user-attachments/assets/90615e17-c9f6-422b-93f5-d506a8c09e85)
+
+Схема алгоритма процесса купли-продажи объекта недвижимости
+
+![схема алгоритма 2](https://github.com/user-attachments/assets/eacba32e-e9bd-4107-8988-533cc018f350)
+
+Схема алгоритма процесса подачи заявки на покупку объекта недвижимости
+
+![схема алгоритма](https://github.com/user-attachments/assets/59dedcee-eeae-4c6d-941a-1988d0c4a7c1)
+
 ## Пользовательский интерфейс
 
 ### User-flow диаграммы
