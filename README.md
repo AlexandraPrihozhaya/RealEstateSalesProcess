@@ -557,6 +557,30 @@ components:
 
 [Файл с документацией для Postman](https://github.com/AlexandraPrihozhaya/RealEstateSalesProcess/blob/6a0dea914818672af175492103ba9fa2720e8617/openapi.json)
 
+## Оценка качества кода
+
+Результат анализа
+
+![1](https://github.com/user-attachments/assets/73a26f1c-4957-4dda-b6a3-6fee30ef1ca1)
+
+Оценка кода по метрике надежность
+
+![2](https://github.com/user-attachments/assets/c90561c0-6560-4af5-8929-66fb6df1c008)
+
+Оценка кода по метрике безопасность
+
+![3](https://github.com/user-attachments/assets/7751a80d-e542-4075-aa2f-9fabe63e1b9e)
+
+Оценка кода по метрике безопасность
+
+![5](https://github.com/user-attachments/assets/a8ac7f00-9e69-43fa-8c26-d4df43f70ea6)
+
+Оценка кода по метрике дублирование
+
+![4](https://github.com/user-attachments/assets/47890586-7f97-4303-95c5-494b410e899b)
+
+
+
 
 
 
