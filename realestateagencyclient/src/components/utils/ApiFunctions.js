@@ -140,3 +140,42 @@ export async function updateUser(userId) {
     }
   }
 }
+
+//
+export async function changeRealtor(realtorId, realtorData) {
+  const formData = new FormData()
+    formData.append("secondName", realtorData.secondName)
+    formData.append("firstName", realtorData.firstName)
+    formData.append("patronymic", realtorData.patronymic)
+    formData.append("phoneNumber", realtorData.phoneNumber)
+  const response = await axios.put(`http://localhost:8080/realtors/update/${realtorId}`, formData, {
+    headers: getHeader()
+  })
+  return response
+}
+
+
+//
+export async function getRealtorByEmail(userId) {
+  try {
+    const response = await axios.get(`http://localhost:8080/realtors/realtor-email-${userId}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+//
+export async function changeRealtorAccount(userId, realtorData) {
+  const formData = new FormData()
+    formData.append("secondName", realtorData.secondName)
+    formData.append("firstName", realtorData.firstName)
+    formData.append("patronymic", realtorData.patronymic)
+    formData.append("phoneNumber", realtorData.phoneNumber)
+  const response = await axios.put(`http://localhost:8080/realtors/updateRealtor/${userId}`, formData, {
+    headers: getHeader()
+  })
+  return response 
+}

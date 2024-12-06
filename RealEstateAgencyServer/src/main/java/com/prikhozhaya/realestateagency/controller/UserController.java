@@ -1,6 +1,7 @@
 package com.prikhozhaya.realestateagency.controller;
 
 import com.prikhozhaya.realestateagency.exception.ResourceNotFoundException;
+import com.prikhozhaya.realestateagency.exception.UserAlreadyExistsException;
 import com.prikhozhaya.realestateagency.model.User;
 import com.prikhozhaya.realestateagency.response.UserResponse;
 import com.prikhozhaya.realestateagency.service.IUserService;
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{email}")
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_REALTOR')")
     public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email){
         try{
             User theUser = userService.getUser(email);
@@ -39,7 +40,7 @@ public class UserController {
         }
     }
     @DeleteMapping("/delete/{userId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or (hasRole('ROLE_USER') and #email == principal.username) or hasRole('ROLE_MANAGER') and #email == principal.username")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or (hasRole('ROLE_USER') and #email == principal.username) or hasRole('ROLE_REALTOR') and #email == principal.username")
     public ResponseEntity<String> deleteUser(@PathVariable("userId") String email){
         try{
             userService.deleteUser(email);

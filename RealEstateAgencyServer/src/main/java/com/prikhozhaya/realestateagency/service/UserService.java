@@ -1,8 +1,10 @@
 package com.prikhozhaya.realestateagency.service;
 
 import com.prikhozhaya.realestateagency.exception.UserAlreadyExistsException;
+import com.prikhozhaya.realestateagency.model.Realtor;
 import com.prikhozhaya.realestateagency.model.Role;
 import com.prikhozhaya.realestateagency.model.User;
+import com.prikhozhaya.realestateagency.repository.RealtorRepository;
 import com.prikhozhaya.realestateagency.repository.RoleRepository;
 import com.prikhozhaya.realestateagency.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -21,6 +23,7 @@ public class UserService implements IUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final RealtorRepository realtorRepository;
 
     @Override
     public User registerUser(User user) {
@@ -82,17 +85,27 @@ public class UserService implements IUserService {
         }
     }
 
+
     @Override
     public User updateUserEmail(String email) {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         Role userRole = roleRepository.findByName("ROLE_USER").get();
         Role realtorRole = roleRepository.findByName("ROLE_REALTOR").get();
+
         if (!user.getRoles().contains(userRole)) {
             userRole.assignRoleToUser(user);
             realtorRole.removeUserFromRole(user);
+
+            Realtor realtor = realtorRepository.findByEmail(email).get();
+            realtorRepository.delete(realtor);
+
         } else {
             realtorRole.assignRoleToUser(user);
             userRole.removeUserFromRole(user);
+
+            Realtor realtor = new Realtor();
+            realtor.setUser(user);
+            realtorRepository.save(realtor);
         }
         return userRepository.save(user);
     }

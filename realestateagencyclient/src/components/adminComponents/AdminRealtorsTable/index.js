@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { SSection, SPaginationContainer, SDivPages, SDivCount, 
     SDivList, SText, SSelect, SOption, SButton, STable, SThead, 
     STr, STh, STbody, STd, SUl, SLi, STextRole, SButtonTask, 
-    SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink } from './styled';
+    SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink,
+    SForm, SInput, SButtonForm } from './styled';
 import { GrPrevious, GrNext } from "react-icons/gr";
-import { getAllRealtors, deleteRealtor } from '../../utils/ApiFunctions';
+import { getAllRealtors, deleteRealtor, changeRealtor } from '../../utils/ApiFunctions';
 import { SiQuicklook } from "react-icons/si";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -19,6 +20,9 @@ const AdminRealtorsTable = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [realtorIdToDelete, setRealtorIdToDelete] = useState(null);
+
+    const [isModalChangeOpen, setIsModalChangeOpen] = useState(false);
+    const [realtorIdToChange, setRealtorIdToChange] = useState(null);
   
   useEffect(() => {
       fetchRealtors()
@@ -75,7 +79,6 @@ const handleDelete = async (realtorId) => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-
   const handleConfirmDelete = async () => {
     try {
       const result = await deleteRealtor(realtorIdToDelete);
@@ -96,6 +99,50 @@ const handleDelete = async (realtorId) => {
     }, 3000);
     setIsModalOpen(false);
   };
+
+  const handleChange = async (realtor) => {
+    editing.secondName = realtor.secondName;
+    editing.firstName = realtor.firstName;
+    editing.patronymic = realtor.patronymic;
+    editing.phoneNumber = realtor.phoneNumber;
+    setRealtorIdToChange(realtor.id);
+    setIsModalChangeOpen(true);
+  };
+
+  const handleModalChangeClose = () => {
+    setIsModalChangeOpen(false);
+  };
+
+  const [editing, setEditing] = useState({
+    secondName: "",
+    firstName: "",
+    patronymic: "",
+    phoneNumber: ""
+  })
+
+  const handleInputChangeEditing = (e) => {
+    setEditing({ ...editing, [e.target.name]: e.target.value })
+  }
+  const handleConfirmEditing = async (e) => {
+    e.preventDefault()
+    try {
+      const result = await changeRealtor(realtorIdToChange, editing)
+      setSuccessMessage("Вы успешно отредактировали риэлтора")
+      fetchRealtors();
+      handleModalChangeClose();
+      setErrorMessage("")
+      setEditing({ secondName: "", firstName: "", patronymic: "", phoneNumber: "" })
+    } catch (error) {
+      setSuccessMessage("")
+      setErrorMessage(`Ошибка изменения: ${error.message}`)
+    }
+    setTimeout(() => {
+      setErrorMessage("")
+      setSuccessMessage("")
+    }, 5000)
+  }
+
+
   return (
     <>
       <SSection>
@@ -144,7 +191,7 @@ const handleDelete = async (realtorId) => {
                         <SButtonTask><SLink to={`/admin/realtors/${realtor.id}`}><SiQuicklook /></SLink></SButtonTask>
                         </STd>
                         <STd>
-                            <SButtonTask><FaEdit /></SButtonTask>
+                            <SButtonTask onClick={() => handleChange(realtor)}><FaEdit /></SButtonTask>
                         </STd>
                         <STd>
                             <SButtonTask onClick={() => handleDelete(realtor.id)}><MdDelete /></SButtonTask>
@@ -163,11 +210,27 @@ const handleDelete = async (realtorId) => {
             <SClose>
                 <SAiOutlineClose onClick={handleModalClose} />
             </SClose>
-            <SText>Вы действительно хотите удалить пользователя с id {realtorIdToDelete}?</SText>
+            <SText>Вы действительно хотите удалить риэлтора с id {realtorIdToDelete}?</SText>
             <SBtns>
                 <SButtonModal onClick={handleConfirmDelete}>Да</SButtonModal>
                 <SButtonModal onClick={handleModalClose}>Нет</SButtonModal>
             </SBtns>
+          </SDialog>
+        </SModal>
+      )}</>
+      <>{isModalChangeOpen && (
+        <SModal>
+          <SDialog>
+            <SClose>
+                <SAiOutlineClose onClick={handleModalChangeClose} />
+            </SClose>
+              <SForm onSubmit={handleConfirmEditing}>
+              <SInput type="text" id="secondName" name="secondName" placeholder="Фамилия" value={editing.secondName} onChange={handleInputChangeEditing}/>
+              <SInput type="text" id="firstName" name="firstName" placeholder="Имя" value={editing.firstName} onChange={handleInputChangeEditing}/>
+              <SInput type="text" id="patronymic" name="patronymic" placeholder="Отчество" value={editing.patronymic} onChange={handleInputChangeEditing}/>
+              <SInput type="tel" id="phoneNumber" name="phoneNumber" placeholder="Телефон" value={editing.phoneNumber} onChange={handleInputChangeEditing}/>
+              <SButtonForm type='submit'>Сохранить</SButtonForm>
+            </SForm>
           </SDialog>
         </SModal>
       )}</>

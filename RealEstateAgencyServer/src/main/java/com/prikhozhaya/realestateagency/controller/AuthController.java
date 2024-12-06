@@ -34,7 +34,6 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user){
         try{
-            System.out.println("34536" + user.getEmail());
             userService.registerUser(user);
             return ResponseEntity.ok("Registration successful!");
 

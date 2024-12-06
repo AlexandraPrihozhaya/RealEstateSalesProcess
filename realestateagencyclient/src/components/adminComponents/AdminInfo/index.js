@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { SSection, SPaginationContainer, SDivPages, SDivCount, 
     SDivList, SText, SSelect, SOption, SButton, STable, SThead, 
     STr, STh, STbody, STd, SUl, SLi, STextRole, SButtonTask, 
-    SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink, SButtonAdd, SDivPagBut } from './styled';
+    SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink, SButtonAdd, SDivPagBut, 
+    SForm, SInput, SButtonForm } from './styled';
 import { GrPrevious, GrNext } from "react-icons/gr";
-import { getAllUsers, deleteUser, updateUser } from '../../utils/ApiFunctions';
+import { getAllUsers, deleteUser, updateUser, registerUser } from '../../utils/ApiFunctions';
 import { SiQuicklook } from "react-icons/si";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -19,6 +20,8 @@ const AdminInfo = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [userIdToDelete, setUserIdToDelete] = useState(null);
+
+    const [isModalAddOpen, setIsModalAddOpen] = useState(false);
   
   useEffect(() => {
       fetchUsers()
@@ -115,6 +118,42 @@ const handleDelete = async (userId) => {
     }, 3000)
   }
 
+  const handleAdd = async () => {
+    setIsModalAddOpen(true);
+  };
+
+  const handleModalAddClose = () => {
+    setIsModalAddOpen(false);
+  };
+
+  const [addition, setAddition] = useState({
+    email: "",
+    password: ""
+  })
+
+  const handleInputChangeAddition = (e) => {
+    setAddition({ ...addition, [e.target.name]: e.target.value })
+  }
+
+  const handleConfirmAddition = async (e) => {
+    e.preventDefault()
+    try {
+      const result = await registerUser(addition)
+      setSuccessMessage("Вы успешно добавили пользователя")
+      fetchUsers();
+      handleModalAddClose();
+      setErrorMessage("")
+      setAddition({ email: "", password: "" })
+    } catch (error) {
+      setSuccessMessage("")
+      setErrorMessage(`Ошибка добавления: ${error.message}`)
+    }
+    setTimeout(() => {
+      setErrorMessage("")
+      setSuccessMessage("")
+    }, 5000)
+  }
+
   return (
     <>
       <SSection>
@@ -144,7 +183,7 @@ const handleDelete = async (userId) => {
                 <SButton onClick={handleNextPage}><GrNext /></SButton>
             </SDivList>
         </SPaginationContainer>
-        <SButtonAdd>Добавить пользователя</SButtonAdd>
+        <SButtonAdd onClick={() => handleAdd()}>Добавить пользователя</SButtonAdd>
         </SDivPagBut>
         <STable>
             <SThead>
@@ -204,6 +243,21 @@ const handleDelete = async (userId) => {
                 <SButtonModal onClick={handleConfirmDelete}>Да</SButtonModal>
                 <SButtonModal onClick={handleModalClose}>Нет</SButtonModal>
             </SBtns>
+          </SDialog>
+        </SModal>
+      )}</>
+
+      <>{isModalAddOpen && (
+        <SModal>
+          <SDialog>
+            <SClose>
+                <SAiOutlineClose onClick={handleModalAddClose} />
+            </SClose>
+              <SForm onSubmit={handleConfirmAddition}>
+              <SInput type="email" id="email" name="email" placeholder="Email" value={addition.email} onChange={handleInputChangeAddition}/>
+              <SInput type="password" id="password" name="password" placeholder="Пароль" value={addition.password} onChange={handleInputChangeAddition}/>
+              <SButtonForm type='submit'>Сохранить</SButtonForm>
+            </SForm>
           </SDialog>
         </SModal>
       )}</>

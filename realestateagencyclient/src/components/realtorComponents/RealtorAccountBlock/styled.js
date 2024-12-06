@@ -19,7 +19,6 @@ export const SInput = styled.input`
     background: #fff;
     border: #ccc 1px solid;
     padding: 12px 15px;
-    margin: 8px 0;
     margin: 5px 0;
     font-size: 16px;
 `;
