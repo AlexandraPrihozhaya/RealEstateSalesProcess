@@ -189,3 +189,399 @@ user.setPassword(passwordEncoder.encode(user.getPassword()));
 Так, пароли в базе данных хранятся в зашифрованном виде.
 
 ![image](https://github.com/user-attachments/assets/85f0e59c-4321-4c30-b022-37c99c138a2c)
+
+## Документация
+
+Документация к API
+
+```
+openapi: 3.0.3
+info:
+  title: Real estate purchase and sale service OpenApi specification
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+paths: 
+  /users/all:
+    get:
+      summary: Method for getting a list of users
+      tags:
+        - users
+      operationId: getUsers
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        '401':
+          description: Full authentication is required to access this resource
+  /users/user/{email}:
+    get:
+      summary: Method for getting user by email
+      tags:
+        - users
+      operationId: getUserByEmail
+      parameters:
+        - name: email
+          in: path
+          description: User email to search for him
+          required: true
+          schema:
+            type: string
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid email
+        '401':
+          description: Full authentication is required to access this resource
+  /users/delete/{email}:
+    delete:
+      summary: Method for deleting user by email
+      tags:
+        - users
+      operationId: deleteUser
+      parameters:
+        - name: email
+          in: path
+          description: User email to delete him
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid email
+        '401':
+          description: Full authentication is required to access this resource
+  /users/update:
+    put:
+      summary: Method for changing a user's role
+      tags:
+        - users
+      operationId: updateUser
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid input
+        '401':
+          description: Full authentication is required to access this resource          
+  /users/user-id-{userId}:
+    get:
+      summary: Method for getting user by id
+      tags:
+        - users
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          description: User id to search for him
+          required: true
+          schema:
+            type: string
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid id
+        '401':
+          description: Full authentication is required to access this resource
+  /realtors/all:
+    get:
+      summary: Method for getting a list of realtors
+      tags:
+        - realtors
+      operationId: getRealtors
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Realtors"
+        '401':
+          description: Full authentication is required to access this resource
+  /realtors/realtor-id-{realtorId}:
+    get:
+      summary: Method for getting realtor by id
+      tags:
+        - realtors
+      operationId: getRealtorById
+      parameters:
+        - name: realtorId
+          in: path
+          description: Realtor id to search for him
+          required: true
+          schema:
+            type: string
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Realtor"
+        '400':
+          description: Invalid id
+        '401':
+          description: Full authentication is required to access this resource
+  /realtors/delete/{realtorId}:
+    delete:
+      summary: Method for deleting realtor by id
+      tags:
+        - realtors
+      operationId: deleteRealtor
+      parameters:
+        - name: realtorId
+          in: path
+          description: Realtor id to delete him
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid id
+        '401':
+          description: Full authentication is required to access this resource
+  /realtors/update/{realtorId}:
+    put:
+      summary: Method for changing realtor data by id
+      tags:
+        - realtors
+      operationId: updateRealtor
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Realtor"
+      parameters:
+        - name: realtorId
+          in: path
+          description: Realtor id to change him
+          required: true
+          schema:
+            type: string
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid id
+        '401':
+          description: Full authentication is required to access this resource  
+  /realtors/updateRealtor/{email}:
+    put:
+      summary: Method for changing realtor data by email
+      tags:
+        - realtors
+      operationId: updateRealtorByEmail
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Realtor"
+      parameters:
+        - name: email
+          in: path
+          description: Realtor email to change him
+          required: true
+          schema:
+            type: string
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid email
+        '401':
+          description: Full authentication is required to access this resource
+  /realtors/realtor-email-{email}:
+    get:
+      summary: Method for getting realtor by email
+      tags:
+        - realtors
+      operationId: getRealtorByEmail
+      parameters:
+        - name: email
+          in: path
+          description: Realtor email to search for him
+          required: true
+          schema:
+            type: string
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Realtor"
+        '400':
+          description: Invalid email
+        '401':
+          description: Full authentication is required to access this resource
+  /auth/register:
+    post:
+      summary: Method for registration user in the system
+      tags:
+        - auth
+      operationId: registerUser
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid input
+  /auth/login:
+    post:
+      summary: Method for authorization user in the system
+      tags:
+        - auth
+      operationId: authenticateUser
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '200': 
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid input          
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - email
+        - password
+        - role
+      properties:
+        id:
+          type: string
+          example: 25
+        email:
+          type: string
+          example: prihsasha@mail.ru
+        password:
+          type: string
+          example: 191719Sp##
+        role:
+          $ref: "#/components/schemas/Role"
+    Users:
+      type: array
+      items: 
+        $ref: "#/components/schemas/User"
+    Realtor:
+      type: object
+      required:
+        - secondName
+        - firstName
+        - phoneNumber
+        - user
+      properties:
+        id:
+          type: string
+          example: 25
+        secondName:
+          type: string
+          example: Prikhozhaya
+        firstName:
+          type: string
+          example: Alexandra
+        patronymic:
+          type: string
+          example: Vasilevna
+        phoneNumber:
+          type: string
+          example: +375294792847
+        user:
+          $ref: "#/components/schemas/User"
+    Realtors:
+      type: array
+      items: 
+        $ref: "#/components/schemas/Realtor"      
+    Role:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          example: 3
+        name:
+          type: string
+          example: ROLE_ADMIN
+```
+
+[Файл с документацией для Postman](https://github.com/AlexandraPrihozhaya/RealEstateSalesProcess/blob/6a0dea914818672af175492103ba9fa2720e8617/openapi.json)
+
+## Оценка качества кода
+
+Результат анализа
+
+![1](https://github.com/user-attachments/assets/73a26f1c-4957-4dda-b6a3-6fee30ef1ca1)
+
+Оценка кода по метрике надежность
+
+![2](https://github.com/user-attachments/assets/c90561c0-6560-4af5-8929-66fb6df1c008)
+
+Оценка кода по метрике безопасность
+
+![3](https://github.com/user-attachments/assets/7751a80d-e542-4075-aa2f-9fabe63e1b9e)
+
+Оценка кода по метрике безопасность
+
+![5](https://github.com/user-attachments/assets/a8ac7f00-9e69-43fa-8c26-d4df43f70ea6)
+
+Оценка кода по метрике дублирование
+
+![4](https://github.com/user-attachments/assets/47890586-7f97-4303-95c5-494b410e899b)
+
+
+
+
+
+
+
