@@ -3,7 +3,6 @@ import Header from '../../components/headerComponents/Header';
 import Footer from '../../components/footerComponents/Footer';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import SearchField from '../../components/catalogComponents/SearchField';
-import CatalogObjects from '../../components/catalogComponents/CatalogObjects';
 
 const Catalog = () => {
   return (
@@ -16,7 +15,6 @@ const Catalog = () => {
         ]}
       />
       <SearchField />
-      <CatalogObjects />
       <Footer />
     </section>
   );

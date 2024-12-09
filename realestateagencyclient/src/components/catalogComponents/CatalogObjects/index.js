@@ -1,84 +1,23 @@
 import React from 'react';
-import { SSection, SDivObjects } from './styled';
-import { Link } from 'react-router-dom';
+import { SCard, SCardImage, SCardContent, SCardTitle, SCardDetails, SCardPrice, SSpan, SP } from './styled';
 
-
-const CatalogObjects = () => {
+const CatalogObjects = ({ object }) => { 
   return (
-    <SSection>
-      <SDivObjects>
-      <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <Link class="card-title" to={'/'}>Квартира в центре города длкпкпдлкп лдо дцук</Link>
-      <div class="card-details">
-        <p>Адрес: ул. Ленина, д. 10</p>
-        <p>Площадь: 50 кв.м.</p>
-        <p>Этаж: 5/9</p>
-        <p>Комнат: 2</p>
-        <p>Санузел: совмещенный</p>
-      </div>
-      <div class="card-price">1 500 000 руб.</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <div class="card-title">Квартира в центре города</div>
-      <div class="card-details">
-        <p>Адрес: ул. Ленина, д. 10</p>
-        <p>Площадь: 50 кв.м.</p>
-        <p>Этаж: 5/9</p>
-        <p>Комнат: 2</p>
-        <p>Санузел: совмещенный</p>
-      </div>
-      <div class="card-price">1 500 000 руб.</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <div class="card-title">Квартира в центре города</div>
-      <div class="card-details">
-        <p>Адрес: ул. Ленина, д. 10</p>
-        <p>Площадь: 50 кв.м.</p>
-        <p>Этаж: 5/9</p>
-        <p>Комнат: 2</p>
-        <p>Санузел: совмещенный</p>
-      </div>
-      <div class="card-price">1 500 000 руб.</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <div class="card-title">Квартира в центре города</div>
-      <div class="card-details">
-        <p>Адрес: ул. Ленина, д. 10</p>
-        <p>Площадь: 50 кв.м.</p>
-        <p>Этаж: 5/9</p>
-        <p>Комнат: 2</p>
-        <p>Санузел: совмещенный</p>
-      </div>
-      <div class="card-price">1 500 000 руб.</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <div class="card-title">Квартира в центре города</div>
-      <div class="card-details">
-        <p>Адрес: ул. Ленина, д. 10</p>
-        <p>Площадь: 50 кв.м.</p>
-        <p>Этаж: 5/9</p>
-        <p>Комнат: 2</p>
-        <p>Санузел: совмещенный</p>
-      </div>
-      <div class="card-price">1 500 000 руб.</div>
-    </div>
-  </div>
-      </SDivObjects>
-    </SSection>
+
+            <SCard key={object.id}>
+              <SCardImage></SCardImage>
+              <SCardContent>
+                <SCardTitle to={'/'}>{object.name}</SCardTitle>
+                <SCardDetails>
+                  <SP>{object.address}</SP>
+                  <SP>Площадь: {object.square} кв.м.</SP>
+                  <SP>Этаж: {object.floor}</SP>
+                  <SP>Комнат: {object.numberOfRooms}</SP>
+                </SCardDetails>
+                <SCardPrice>{object.price} руб. / <SSpan>{ Math.round(object.price/3.33)} USD</SSpan></SCardPrice>
+              </SCardContent>
+            </SCard>
+
   );
 };
 

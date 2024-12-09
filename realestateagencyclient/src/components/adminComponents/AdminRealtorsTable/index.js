@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { SSection, SPaginationContainer, SDivPages, SDivCount, 
     SDivList, SText, SSelect, SOption, SButton, STable, SThead, 
-    STr, STh, STbody, STd, SUl, SLi, STextRole, SButtonTask, 
+    STr, STh, STbody, STd, SButtonTask, 
     SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink,
-    SForm, SInput, SButtonForm } from './styled';
+    SForm, SInput, SButtonForm, SH2, SLabel, SDivInput } from './styled';
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { getAllRealtors, deleteRealtor, changeRealtor } from '../../utils/ApiFunctions';
 import { SiQuicklook } from "react-icons/si";
@@ -224,11 +224,24 @@ const handleDelete = async (realtorId) => {
             <SClose>
                 <SAiOutlineClose onClick={handleModalChangeClose} />
             </SClose>
+            <SH2>Изменение риэлтора</SH2>
               <SForm onSubmit={handleConfirmEditing}>
-              <SInput type="text" id="secondName" name="secondName" placeholder="Фамилия" value={editing.secondName} onChange={handleInputChangeEditing}/>
-              <SInput type="text" id="firstName" name="firstName" placeholder="Имя" value={editing.firstName} onChange={handleInputChangeEditing}/>
-              <SInput type="text" id="patronymic" name="patronymic" placeholder="Отчество" value={editing.patronymic} onChange={handleInputChangeEditing}/>
-              <SInput type="tel" id="phoneNumber" name="phoneNumber" placeholder="Телефон" value={editing.phoneNumber} onChange={handleInputChangeEditing}/>
+              <SDivInput>
+                <SLabel htmlFor="secondName">Фамилия</SLabel>
+                <SInput type="text" id="secondName" name="secondName" placeholder="Фамилия" value={editing.secondName} onChange={handleInputChangeEditing}/>
+              </SDivInput>
+              <SDivInput>
+                <SLabel htmlFor="firstName">Имя</SLabel>
+                <SInput type="text" id="firstName" name="firstName" placeholder="Имя" value={editing.firstName} onChange={handleInputChangeEditing}/>
+              </SDivInput>
+              <SDivInput>
+                <SLabel htmlFor="patronymic">Отчество</SLabel>
+                <SInput type="text" id="patronymic" name="patronymic" placeholder="Отчество" value={editing.patronymic} onChange={handleInputChangeEditing}/>
+              </SDivInput>
+              <SDivInput>
+                <SLabel htmlFor="phoneNumber">Телефон</SLabel>
+                <SInput type="tel" id="phoneNumber" name="phoneNumber" placeholder="Телефон" value={editing.phoneNumber} onChange={handleInputChangeEditing}/>
+              </SDivInput>
               <SButtonForm type='submit'>Сохранить</SButtonForm>
             </SForm>
           </SDialog>

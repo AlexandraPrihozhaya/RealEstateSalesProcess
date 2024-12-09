@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getRealtorByEmail } from "../../utils/ApiFunctions";
 import { SSection, SForm, SInput, SLabel, SButton, SDiv, SDivPicture, SDivInput } from './styled';
-import { changeRealtorAccount } from '../../utils/ApiFunctions';
+import { changeRealtorAccount, getRealtorByEmail } from '../../utils/ApiFunctions';
 
 const RealtorAccountBlock = () => {
   const userId = localStorage.getItem("userId");
@@ -88,7 +87,7 @@ const RealtorAccountBlock = () => {
           </SDivInput>
           <SDivInput>
             <SLabel htmlFor="email">Email</SLabel>
-            <SInput type="email" id="email" value={userId} readOnly />
+            <SInput disabled="true" type="email" id="email" value={userId} readOnly />
           </SDivInput>
           <SDivInput>
             <SLabel htmlFor="phone">Телефон</SLabel>

@@ -89,3 +89,14 @@ export const SButton = styled.button`
     transform: scale(.95);
   }
 `;
+
+export const SForm = styled.form`
+
+`;
+
+export const SInput = styled.input`
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+`;

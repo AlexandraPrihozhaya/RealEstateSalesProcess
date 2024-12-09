@@ -154,7 +154,6 @@ export async function changeRealtor(realtorId, realtorData) {
   return response
 }
 
-
 //
 export async function getRealtorByEmail(userId) {
   try {
@@ -178,4 +177,49 @@ export async function changeRealtorAccount(userId, realtorData) {
     headers: getHeader()
   })
   return response 
+}
+
+//
+export async function getAllDistricts() {
+  try {
+    const result = await axios.get("http://localhost:8080/districts/all", {
+            headers: getHeader(),
+            validateStatus: () => {
+              return true;
+            }
+        })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching districts: ${error.message}`)
+  }
+}
+
+//
+export async function getAllMicroDistricts() {
+  try {
+    const result = await axios.get("http://localhost:8080/micro_districts/all", {
+            headers: getHeader(),
+            validateStatus: () => {
+              return true;
+            }
+        })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching microdistricts: ${error.message}`)
+  }
+}
+
+//
+export async function getAllReobjects() {
+  try {
+    const result = await axios.get("http://localhost:8080/objects/all", {
+            headers: getHeader(),
+            validateStatus: () => {
+              return true;
+            }
+        })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching objects: ${error.message}`)
+  }
 }

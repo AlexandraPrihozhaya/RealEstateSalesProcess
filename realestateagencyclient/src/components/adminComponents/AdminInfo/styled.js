@@ -267,3 +267,17 @@ export const SButtonForm = styled.button`
         cursor: pointer;
     }
 `;
+
+export const SH2 = styled.h2`
+    margin-top: 0;
+`;
+
+export const SLabel = styled.label`
+    display: block;
+    font-size: 12px;
+    text-align: start;
+`;
+
+export const SDivInput = styled.div`
+
+`;

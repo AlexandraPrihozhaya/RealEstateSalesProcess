@@ -61,3 +61,15 @@ export const SButton = styled.button`
     cursor: pointer;
     text-transform: uppercase;
 `;
+
+export const SSectionCards = styled.section`
+  padding: 30px 200px;
+  background-color: #fff;
+`;
+
+export const SDivObjects = styled.div`
+  display: grid;
+  columns: 3;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 15px;
+`;

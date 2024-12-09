@@ -3,7 +3,7 @@ import { SSection, SPaginationContainer, SDivPages, SDivCount,
     SDivList, SText, SSelect, SOption, SButton, STable, SThead, 
     STr, STh, STbody, STd, SUl, SLi, STextRole, SButtonTask, 
     SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink, SButtonAdd, SDivPagBut, 
-    SForm, SInput, SButtonForm } from './styled';
+    SForm, SInput, SButtonForm, SH2, SLabel, SDivInput } from './styled';
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { getAllUsers, deleteUser, updateUser, registerUser } from '../../utils/ApiFunctions';
 import { SiQuicklook } from "react-icons/si";
@@ -253,9 +253,16 @@ const handleDelete = async (userId) => {
             <SClose>
                 <SAiOutlineClose onClick={handleModalAddClose} />
             </SClose>
+            <SH2>Добавление пользователя</SH2>
               <SForm onSubmit={handleConfirmAddition}>
-              <SInput type="email" id="email" name="email" placeholder="Email" value={addition.email} onChange={handleInputChangeAddition}/>
-              <SInput type="password" id="password" name="password" placeholder="Пароль" value={addition.password} onChange={handleInputChangeAddition}/>
+              <SDivInput>
+                <SLabel htmlFor="email">Email</SLabel>
+                <SInput type="email" id="email" name="email" placeholder="Email" value={addition.email} onChange={handleInputChangeAddition}/>
+              </SDivInput>
+              <SDivInput>
+                <SLabel htmlFor="password">Пароль</SLabel>
+                <SInput type="password" id="password" name="password" placeholder="Пароль" value={addition.password} onChange={handleInputChangeAddition}/>
+              </SDivInput>
               <SButtonForm type='submit'>Сохранить</SButtonForm>
             </SForm>
           </SDialog>

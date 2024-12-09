@@ -86,18 +86,6 @@ export const STd = styled.td`
     border-bottom: 1px solid #bfbfbf;
 `;
 
-export const SUl = styled.ul`
-    list-style-type: none;
-`;
-
-export const SLi = styled.li`
-   
-`;
-
-export const STextRole = styled.text`
-
-`;
-
 export const SButtonTask = styled.button`
     border: none;
     background: transparent;
@@ -232,4 +220,18 @@ export const SButtonForm = styled.button`
     &:hover {
         cursor: pointer;
     }
+`;
+
+export const SH2 = styled.h2`
+    margin-top: 0;
+`;
+
+export const SLabel = styled.label`
+    display: block;
+    font-size: 12px;
+    text-align: start;
+`;
+
+export const SDivInput = styled.div`
+
 `;
