@@ -223,3 +223,15 @@ export async function getAllReobjects() {
     throw new Error(`Error fetching objects: ${error.message}`)
   }
 }
+
+//
+export async function getObjectById(objectId) {
+  try {
+    const response = await axios.get(`http://localhost:8080/objects/object-id-${objectId}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}

@@ -21,6 +21,7 @@ import Contacts from './pages/Contacts';
 import RealtorAccountPage from './pages/RealtorAccountPage';
 import AdminRealtorsPage from './pages/AdminRealtorsPage';
 import AdminRealtorPage from './pages/AdminRealtorPage';
+import ObjectPage from './pages/ObjectPage';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/realtor/leads" element={<RealtorLeadsPage />} />
           <Route path="/realtor/account" element={<RealtorAccountPage />} />
           <Route path="/admin/realtors/:realtorId" element={<AdminRealtorPage />} />
+          <Route path="/catalog/:objectId" element={<ObjectPage />} />
         </Routes>
       </Router>
     </AuthProvider>

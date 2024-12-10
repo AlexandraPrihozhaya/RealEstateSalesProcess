@@ -21,7 +21,7 @@ const Contacts = () => {
       
       <RequestFormContacts />
       <ContactsBlock />
-      <MapBlock />
+      <MapBlock address={"ул. Притыцкого, 78"}/>
       <Footer />
     </section>
   );  

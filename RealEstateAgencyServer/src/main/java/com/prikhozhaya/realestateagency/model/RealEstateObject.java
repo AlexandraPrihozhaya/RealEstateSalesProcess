@@ -1,12 +1,14 @@
 package com.prikhozhaya.realestateagency.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Getter
@@ -30,4 +32,8 @@ public class RealEstateObject {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "micro_district_id")
     private MicroDistrict microDistrict;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="realEstateObject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Picture> pictures;
 }

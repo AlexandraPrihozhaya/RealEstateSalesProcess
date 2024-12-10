@@ -14,7 +14,7 @@ export const SCardImage = styled.div`
   height: 200px;
   background-size: cover;
   background-position: center;
-  background-image: url(https://m.realt.by/typo3temp/pics/14/85/148522d04c93d5a443a94e163c7827e2.jpeg);
+  background-image: url(${props => props.img});
 `;
 
 export const SCardContent = styled.div`
