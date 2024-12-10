@@ -89,9 +89,11 @@ User-flow для администратора
 
 ![image](https://github.com/user-attachments/assets/8353fa23-db72-4a3c-b1ae-cb871ee3cb49)
 
-![image](https://github.com/user-attachments/assets/f231cbf0-d935-4d8b-927d-938c5e23f710)
+![image](https://github.com/user-attachments/assets/d1d94c08-a8d0-47fe-8412-52cb251bb606)
 
-![image](https://github.com/user-attachments/assets/04230ff1-87cc-4326-ac10-7e26dc5fbf7b)
+![image](https://github.com/user-attachments/assets/18bd48be-06e7-4b03-9909-33f58d5bcbd1)
+
+![image](https://github.com/user-attachments/assets/7290f079-c504-4d53-a06e-f066ce9ea667)
 
 ![image](https://github.com/user-attachments/assets/1cdd4e59-2021-42ad-abbe-d7a39df9eae0)
 
@@ -101,7 +103,7 @@ User-flow для администратора
 
 ![image](https://github.com/user-attachments/assets/002ac90b-eb53-4f58-bd33-cc707de94fb5)
 
-![image](https://github.com/user-attachments/assets/2cf0d182-5a88-4398-ae44-099bdd27e32c)
+![image](https://github.com/user-attachments/assets/44f1f3e6-e1ef-4fc5-ba19-2c19454c1a72)
 
 ![image](https://github.com/user-attachments/assets/90831344-b72a-4be5-91be-a3903f63efdb)
 
@@ -111,13 +113,25 @@ User-flow для администратора
 
 ![image](https://github.com/user-attachments/assets/1fca8b77-a636-449f-9ddc-72c1aa95420c)
 
-![image](https://github.com/user-attachments/assets/c84ed776-34bc-40cd-9229-8dec0e047ada)
+![image](https://github.com/user-attachments/assets/1ea77cb3-cc9e-45b6-885f-1930fce4c022)
 
-![image](https://github.com/user-attachments/assets/4dcd936d-e4b7-4ac2-8b15-2cf13e89afe1)
+![image](https://github.com/user-attachments/assets/0f08006b-5792-4721-8874-e7c563a4e557)
 
-![image](https://github.com/user-attachments/assets/6df24846-e2ed-4101-833d-2d9c24c1a8a1)
+![image](https://github.com/user-attachments/assets/3d39adb1-166a-4e7e-be5a-fac2e495d922)
 
-![image](https://github.com/user-attachments/assets/ad18bf40-6f71-4261-a827-ccf9901a61f4)
+![image](https://github.com/user-attachments/assets/b7b000e6-fe2f-43fc-b33a-15e833ffd1d3)
+
+![image](https://github.com/user-attachments/assets/39d29d6d-5513-47b2-8895-090b3883078e)
+
+![image](https://github.com/user-attachments/assets/5e78e840-061a-4cbd-ab73-751dec54aeb4)
+
+![image](https://github.com/user-attachments/assets/d5a277a2-29e1-4bdc-931f-158fbef9f5e2)
+
+![image](https://github.com/user-attachments/assets/b7688a38-a26c-4d24-b7ec-42604db918eb)
+
+![image](https://github.com/user-attachments/assets/4e79ff66-d100-48fd-abaa-c69afac59a6c)
+
+![image](https://github.com/user-attachments/assets/1a477e72-360a-478b-9819-369b855add15)
 
 ## Безопасность
 
