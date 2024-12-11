@@ -22,6 +22,10 @@ import RealtorAccountPage from './pages/RealtorAccountPage';
 import AdminRealtorsPage from './pages/AdminRealtorsPage';
 import AdminRealtorPage from './pages/AdminRealtorPage';
 import ObjectPage from './pages/ObjectPage';
+import CatalogApartments from './pages/CatalogApartments';
+import CatalogHouses from './pages/CatalogHouses';
+import CatalogRooms from './pages/CatalogRooms';
+import CatalogPlots from './pages/CatalogPlots';
 
 function App() {
   return (
@@ -48,6 +52,10 @@ function App() {
           <Route path="/realtor/account" element={<RealtorAccountPage />} />
           <Route path="/admin/realtors/:realtorId" element={<AdminRealtorPage />} />
           <Route path="/catalog/:objectId" element={<ObjectPage />} />
+          <Route path="/catalog/apartments" element={<CatalogApartments />} />
+          <Route path="/catalog/houses" element={<CatalogHouses />} />
+          <Route path="/catalog/rooms" element={<CatalogRooms />} />
+          <Route path="/catalog/plots" element={<CatalogPlots />} />
         </Routes>
       </Router>
     </AuthProvider>

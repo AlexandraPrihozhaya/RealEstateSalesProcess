@@ -49,7 +49,7 @@ const ObjectInfo = () => {
       <SDivContainer>
       {selectedImg && ( 
           <SMainImg
-            src={`data:image/jpeg;base64,${selectedImg}`} 
+            img={`data:image/jpeg;base64,${selectedImg}`} 
             alt="Выбранное изображение"
           />
         )}

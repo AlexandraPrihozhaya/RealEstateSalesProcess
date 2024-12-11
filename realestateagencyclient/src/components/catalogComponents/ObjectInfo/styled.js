@@ -29,9 +29,11 @@ export const SDivInfo = styled.div`
   background-color: #f5f5f5;
 `;
 
-export const SMainImg = styled.img`
+export const SMainImg = styled.div`
     width: 100%;
-    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(${props => props.img});
 `;
 
 export const SImg = styled.img`
@@ -42,6 +44,7 @@ export const SImg = styled.img`
     &:hover {
       border-color: #ff8a00;
     }
+    height: 140px;
 `;
 
 export const SH1 = styled.h1`

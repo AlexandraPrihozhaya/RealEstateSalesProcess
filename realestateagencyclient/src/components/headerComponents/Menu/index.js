@@ -33,9 +33,10 @@ const Menu = () => {
 
         <SA href='/catalog' isActive={window.location.pathname === '/catalog'}>Каталог недвижимости</SA>
         <SDivContent isOpen={openDropdown === 'catalog'}>
-          <SADiv href="#">Квартиры</SADiv>
-          <SADiv href="#">Дома, коттеджи</SADiv>
-          <SADiv href="#">Комнаты</SADiv>
+          <SADiv href="/catalog/apartments">Квартиры</SADiv>
+          <SADiv href="/catalog/houses">Дома, коттеджи</SADiv>
+          <SADiv href="/catalog/plots">Участки</SADiv>
+          <SADiv href="/catalog/rooms">Комнаты</SADiv>
         </SDivContent>
       </SDivDropdown>
 

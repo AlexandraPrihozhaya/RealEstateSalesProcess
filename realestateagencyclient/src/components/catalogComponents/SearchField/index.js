@@ -96,6 +96,7 @@ const SearchField = () => {
                             <SOption value="Квартира">Квартира</SOption>
                             <SOption value="Дом">Дом</SOption>
                             <SOption value="Участок">Участок</SOption>
+                            <SOption value="Комната">Комната</SOption>
                         </SSelect>
                     </SFormGroup>
                     <SFormGroup>
