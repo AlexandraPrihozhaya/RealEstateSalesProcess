@@ -63,9 +63,26 @@ const SearchField = () => {
     const [yearFrom, setYearFrom] = useState("");
     const [yearTo, setYearTo] = useState("");
     const [type, setType] = useState("all");
+    const [sort, setSort] = useState("new");
 
     const filterReobjects = () => {
-        return reobjects.filter(reobject => {
+
+        const sortedReobjects = reobjects.sort((a, b) => {
+            switch (sort) {
+                case 'new':
+                    return b.yearOfConstruction - a.yearOfConstruction;
+                case 'old':
+                    return a.yearOfConstruction - b.yearOfConstruction;
+                case 'asc':
+                    return a.price - b.price;
+                case 'desc':
+                    return b.price - a.price;
+                default:
+                    return 0;
+            }
+        });
+
+        return sortedReobjects.filter(reobject => {
             const typeValid = (type === "all" || reobject.type === type);
             const priceValid = (!priceFrom || reobject.price >= priceFrom) && (!priceTo || reobject.price <= priceTo);
             const roomsValid = (rooms === "all" || reobject.numberOfRooms == rooms);
@@ -159,6 +176,14 @@ const SearchField = () => {
                             <SInput type="number" id="year" placeholder="до" value={yearTo} onChange={(e) => setYearTo(e.target.value)} />
                         </SFormInput>
                     </SFormGroup>
+                    <SFormGroup>
+                            <SSelect id="sort" value={sort} onChange={(e) => setSort(e.target.value)}>
+                                <SOption value="new">Сначала новые</SOption>
+                                <SOption value="old">Сначала старые</SOption>
+                                <SOption value="asc">По возрастанию цены</SOption>
+                                <SOption value="desc">По убыванию цены</SOption>
+                            </SSelect>
+                        </SFormGroup>
                     <SFormGroup>
                         <SButton type="submit">Искать</SButton>
                     </SFormGroup>

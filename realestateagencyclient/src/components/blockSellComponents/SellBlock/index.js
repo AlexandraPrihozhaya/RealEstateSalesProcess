@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SSection, SButton, SH1, SDiv, SDiv1, SDiv2 } from './styled';
 import SellForm from '../SellForm';
+import RequireAuth from '../../auth/RequireAuth';
     
 
 const SellBlock = () => {
@@ -22,7 +23,11 @@ const SellBlock = () => {
       </SButton>
       </SDiv2>
       </SDiv>
-      {showFormOffers && <SellForm/>}
+      {showFormOffers && 
+        <RequireAuth>
+          {<SellForm/>}
+        </RequireAuth>
+      }
     </SSection>
   );
 };

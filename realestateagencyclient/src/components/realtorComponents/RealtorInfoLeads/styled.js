@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export const SSection = styled.section`
@@ -86,17 +85,6 @@ export const STd = styled.td`
     border-bottom: 1px solid #bfbfbf;
 `;
 
-export const SUl = styled.ul`
-    list-style-type: none;
-`;
-
-export const SLi = styled.li`
-   
-`;
-
-export const STextRole = styled.text`
-
-`;
 
 export const SButtonTask = styled.button`
     border: none;
@@ -106,87 +94,6 @@ export const SButtonTask = styled.button`
     &:hover {
         cursor: pointer;
     }
-`;
-
-  export const SModal = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.25);
-  animation-name: appear;
-  animation-duration: 300ms;
-`;
-
-export const SDialog = styled.div`
-width: 100%;
-max-width: 550px;
-padding: 30px;
-background: white;
-position: relative;
-margin: 0 20px;
-text-align: center;
-display: flex;
-flex-direction: column;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
--webkit-animation-name: animatetop;
--webkit-animation-duration: 0.4s;
-animation-name: slide-in;
-animation-duration: 0.5s;
-`;
-
-export const SBtns = styled.div`
-display: flex;
-flex-direction: row;
-  justify-content: center;
-  margin-top: 20px;
-  gap: 10px;
-`;
-
-export const SAiOutlineClose = styled(AiOutlineClose)`
-margin-bottom: 20px;
-float: right;
-
-&:hover {
-    cursor: pointer;
-}
-font-size: 18px;
-`;
-
-export const SClose = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-export const SButtonModal = styled.button`
-border-radius: 10px;
-border: 1px solid #ff8a00 ;
-background: #ff8a00 ;
-color: #fff;
-font-size: 12px;
-font-weight: bold;
-padding: 12px 45px;
-letter-spacing: 1px;
-text-transform: uppercase;
-transition: transform 80ms ease-in;
-margin: 15px 0;
-
-&:active {
-    transform: scale(.95);
-}
-
-&:focus {
-    outline: none;
-}
-&:hover {
-    cursor: pointer;
-}
 `;
 
 export const SLink = styled(Link)`

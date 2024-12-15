@@ -235,3 +235,58 @@ export async function getObjectById(objectId) {
     throw error
   }
 }
+
+//
+export async function addLeadClient(userId, leadClientData) {
+  try {
+      const response = await axios.post(`http://localhost:8080/leadClients/addLeadClient/${userId}`, leadClientData, {
+          headers: getHeader()
+      });
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка при добавлении клиента:", error.response ? error.response.data : error.message);
+      throw error;
+  }
+}
+
+//
+export async function addObject(userId, objectData) {
+  try {
+      const response = await axios.post(`http://localhost:8080/objects/addRealEstateObject/${userId}`, objectData, {
+  headers: getHeader()
+      });
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка при добавлении объекта:", error.response ? error.response.data : error.message);
+      throw error; 
+  }
+}
+
+//
+export async function getAllLeads() {
+try {
+  const result = await axios.get("http://localhost:8080/leadClients/all", {
+      headers: getHeader(),
+      validateStatus: () => {
+      return true;
+      }
+    })
+  return result.data
+} catch (error) {
+  throw new Error(`Error fetching leads: ${error.message}`)
+}
+}
+
+//
+export async function getLeadById(leadId) {
+try {
+  const response = await axios.get(`http://localhost:8080/leadClients/lead-id-${leadId}`, {
+    headers: getHeader()
+  })
+  return response.data
+} catch (error) {
+  throw error
+}
+}

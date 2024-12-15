@@ -36,4 +36,8 @@ public class RealEstateObject {
     @JsonManagedReference
     @OneToMany(mappedBy="realEstateObject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Picture> pictures;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "lead_client_id")
+    private LeadClient leadClient;
 }

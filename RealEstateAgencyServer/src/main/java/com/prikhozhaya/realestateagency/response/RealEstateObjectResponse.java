@@ -24,7 +24,6 @@ public class RealEstateObjectResponse {
     private String description;
 
     private MicroDistrict microDistrict;
-
     private List<String> pictures;
 
     public RealEstateObjectResponse(Long id, String name, String type, BigDecimal price, String address, BigDecimal square,

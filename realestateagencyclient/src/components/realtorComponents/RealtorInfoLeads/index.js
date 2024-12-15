@@ -1,34 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { SSection, SPaginationContainer, SDivPages, SDivCount, 
     SDivList, SText, SSelect, SOption, SButton, STable, SThead, 
-    STr, STh, STbody, STd, SUl, SLi, STextRole, SButtonTask, 
-    SModal, SDialog, SBtns, SAiOutlineClose, SClose, SButtonModal, SLink } from './styled';
+    STr, STh, STbody, STd, SButtonTask, SLink } from './styled';
 import { GrPrevious, GrNext } from "react-icons/gr";
-import { getAllUsers, deleteUser } from '../../utils/ApiFunctions';
+import { getAllLeads } from '../../utils/ApiFunctions';
 import { SiQuicklook } from "react-icons/si";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 
 const RealtorInfoLeads = () => {
 
-    const [users, setUsers] = useState([])
+    const [leads, setLeads] = useState([])
     const [search, setSearch] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const [successMessage, setSuccessMessage] = useState("")
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [userIdToDelete, setUserIdToDelete] = useState(null);
   
   useEffect(() => {
-      fetchUsers()
+      fetchLeads()
     }, [])
   
-    const fetchUsers = async () => {
+    const fetchLeads = async () => {
       setIsLoading(true)
       try {
-        const result = await getAllUsers()
-        setUsers(result)
+        const result = await getAllLeads()
+        setLeads(result)
         setIsLoading(false)
       } catch (error) {
         setErrorMessage(error.message)
@@ -36,12 +30,12 @@ const RealtorInfoLeads = () => {
       }
     }
 
-  const columns = ['№', 'Email', 'Роли', 'Подробная информация', 'Редактирование', 'Удаление'];
+  const columns = ['№', 'Фамилия', 'Имя', 'Отчество', 'Телефон', 'Email', 'Подробная информация'];
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  const totalPages = Math.ceil(users.length / itemsPerPage);
+  const totalPages = Math.ceil(leads.length / itemsPerPage);
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
@@ -65,44 +59,13 @@ if (startIndex < 0) {
   startIndex = 0;
 }
 const endIndex = startIndex + itemsPerPage;
-const pageData = users.slice(startIndex, endIndex);
-
-const handleDelete = async (userId) => {
-    setUserIdToDelete(userId);
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleConfirmDelete = async () => {
-    try {
-      const result = await deleteUser(userIdToDelete);
-      if (result === "User deleted successfully") {
-        setSuccessMessage(
-          `Пользователь с email ${userIdToDelete} был удален`
-        );
-        fetchUsers();
-      } else {
-        console.error(`Error deleting user : ${result.message}`);
-      }
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-    setTimeout(() => {
-      setSuccessMessage("");
-      setErrorMessage("");
-    }, 3000);
-    setIsModalOpen(false);
-  };
+const pageData = leads.slice(startIndex, endIndex);
 
   return (
     <>
-      <SSection isModalOpen={isModalOpen}>
+      <SSection>
         <div>
          {successMessage && <p>{successMessage}</p>}
-
          {errorMessage && <p>Ошибка выполнения запроса</p>}
        </div>
        {isLoading ? (
@@ -134,58 +97,24 @@ const handleDelete = async (userId) => {
                 </STr> 
             </SThead>
             <STbody>
-                {pageData.map((user, index) => (
-                    <STr key={user.id}>
+                {pageData.map((lead, index) => (
+                    <STr key={lead.id}>
                         <STd key={index}>{index+1}</STd>
-                        <STd>{user.email}</STd>
+                        <STd>{lead.secondName}</STd>
+                        <STd>{lead.firstName}</STd>
+                        <STd>{lead.patronymic}</STd>
+                        <STd>{lead.phoneNumber}</STd>
+                        <STd>{lead.user.email}</STd>
                         <STd>
-                            <SUl>
-                                {user.roles.map((role) => (
-                                    <SLi key={role.id}>
-                                        {role.name === "ROLE_USER" && (
-                                            <STextRole>Пользователь</STextRole>
-                                        )}
-                                        {role.name === "ROLE_MANAGER" && (
-                                            <STextRole>Менеджер</STextRole>
-                                        )}
-                                        {role.name === "ROLE_ADMIN" && (
-                                            <STextRole>Администратор</STextRole>
-                                        )}
-                                    </SLi>
-                                ))}
-                            </SUl>
+                        <SButtonTask><SLink to={`/realtor/leads/${lead.id}`}><SiQuicklook /></SLink></SButtonTask>
                         </STd>
-                        <STd>
-                        <SButtonTask><SLink to={`/admin/users/${user.id}`}><SiQuicklook /></SLink></SButtonTask>
-                        </STd>
-                        <STd>
-                            <SButtonTask><FaEdit /></SButtonTask>
-                        </STd>
-                        <STd>
-                            <SButtonTask onClick={() => handleDelete(user.email)}><MdDelete /></SButtonTask>
-                        </STd>
-                        </STr>
+                    </STr>
                 ))}
             </STbody> 
             </STable>
             </>
             )}
       </SSection>
-
-      <>{isModalOpen && (
-        <SModal>
-          <SDialog>
-            <SClose>
-                <SAiOutlineClose onClick={handleModalClose} />
-            </SClose>
-            <SText>Вы действительно хотите удалить пользователя с email {userIdToDelete}?</SText>
-            <SBtns>
-                <SButtonModal onClick={handleConfirmDelete}>Да</SButtonModal>
-                <SButtonModal onClick={handleModalClose}>Нет</SButtonModal>
-            </SBtns>
-          </SDialog>
-        </SModal>
-      )}</>
       </>
   );
 };

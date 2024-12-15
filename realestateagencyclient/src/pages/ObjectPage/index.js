@@ -3,6 +3,7 @@ import Header from '../../components/headerComponents/Header';
 import Footer from '../../components/footerComponents/Footer';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import ObjectInfo from '../../components/catalogComponents/ObjectInfo';
+import { Map } from '@pbe/react-yandex-maps';
 
 const ObjectPage = () => {
   return (

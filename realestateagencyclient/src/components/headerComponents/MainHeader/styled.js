@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 export const SSection = styled.section`
   position: relative;
@@ -11,8 +12,10 @@ export const SSlider = styled(Slider)`
 `;
 
 export const SSlide = styled.div`
-  position: relative;
   height: 670px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 `;
 
 export const SSlideContent = styled.div`
@@ -20,13 +23,15 @@ export const SSlideContent = styled.div`
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0 20px;
-  max-width: 80%;
-  height: 100%;
   width: 400px;
+  margin: 160px 38%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const STitle = styled.h2`
-
+  font-size: 34px;
 `;
 
 export const SText = styled.p`
@@ -117,4 +122,35 @@ export const SDots = styled.div`
       background: #ff8a00;
     }
   }
+`;
+
+export const SButton = styled.button`
+    border-radius: 10px;
+    border: 1px solid #ff8a00;
+    background: #fff;
+    color: #ff8a00;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin: 15px 0;
+
+    &:active {
+        transform: scale(.95);
+    }
+
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    
+`;
+
+export const SLink = styled(Link)`
+    text-decoration: none;
+    color: #ff8a00;
 `;
