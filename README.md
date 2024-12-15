@@ -103,6 +103,8 @@ User-flow для администратора
 
 ![image](https://github.com/user-attachments/assets/f5177ea5-e5a4-4f59-9584-57b29ad9d967)
 
+![image](https://github.com/user-attachments/assets/cba4dba9-e4b1-4a01-b2a5-8d2eecf46b33)
+
 ![image](https://github.com/user-attachments/assets/2a4a1814-5967-4306-bb84-244d61741365)
 
 ![image](https://github.com/user-attachments/assets/002ac90b-eb53-4f58-bd33-cc707de94fb5)
@@ -136,6 +138,10 @@ User-flow для администратора
 ![image](https://github.com/user-attachments/assets/4e79ff66-d100-48fd-abaa-c69afac59a6c)
 
 ![image](https://github.com/user-attachments/assets/1a477e72-360a-478b-9819-369b855add15)
+
+![image](https://github.com/user-attachments/assets/98afe8f2-92c0-4cec-8b3e-143c3583ca95)
+
+![image](https://github.com/user-attachments/assets/ee1fc3e4-4e9c-4bc3-86a8-a4846580d6af)
 
 ## Безопасность
 
