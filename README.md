@@ -33,7 +33,7 @@
 
 Диаграмма состояний заявки на покупку/продажу объекта жилой недвижимости
 
-![Untitled](https://github.com/user-attachments/assets/540d16d9-c0c8-400d-b50a-09753544929f)
+![диаграмма состояний (1)](https://github.com/user-attachments/assets/48ba8852-078f-4d4a-b704-9b3023d7c09f)
 
 Диаграмма последовательности процесса «Подать заявку на покупку объекта недвижимости»
 
@@ -77,7 +77,7 @@ User-flow для администратора
 
 ### Примеры экранов UI
 
-![image](https://github.com/user-attachments/assets/6b57ba1d-e3a2-46fe-9c0c-331ec9f84a19)
+![image](https://github.com/user-attachments/assets/81c44340-6eb5-40d3-8152-49a3991d54d9)
 
 ![image](https://github.com/user-attachments/assets/12e2cc41-07a0-4076-ba78-109650c476a9)
 
