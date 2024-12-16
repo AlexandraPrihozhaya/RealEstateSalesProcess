@@ -25,7 +25,6 @@ public class MicroDistrictController {
         return new ResponseEntity<>(microDistrictService.getMicroDistricts(), HttpStatus.FOUND);
     }
 
-
     private MicroDistrictResponse getMicroDistrictResponse(MicroDistrict microDistrict) {
 
         return new MicroDistrictResponse(microDistrict.getId(),
