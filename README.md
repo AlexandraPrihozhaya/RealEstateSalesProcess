@@ -605,9 +605,238 @@ components:
 
 ## Тестирование
 
+Опишем процесс тестирования программного средства.
+Программное средство тестируют в несколько этапов. Сначала проводят модульное или юнит-тестирование. В этом случае проверяют работу отдельных функций. 
+Затем – интеграционное тестирование. Модули объединяют в группы и проверяют, как они друг с другом взаимодействуют.
+Системное тестирование проводят после интеграционного. На этом этапе систему или приложение проверяют как единое целое и тестируют все компоненты в различных комбинациях. Цель системного тестирования — убедиться, что продукт соответствует техническим требованиям и работает без ошибок.
 
+### Unit-тестирование
 
+Ниже представлены примеры unit-тестов
 
+DistrictControllerTest
 
+```ruby
+@SpringBootTest
+public class DistrictControllerTest {
 
+    @InjectMocks
+    private DistrictController districtController;
 
+    @Mock
+    private IDistrictService districtService;
+
+    @Test
+    void testGetDistricts() {
+        List<District> districts = new ArrayList<>();
+        District district1 = new District();
+        district1.setId(1L);
+        district1.setName("test1");
+
+        District district2 = new District();
+        district2.setId(2L);
+        district2.setName("test2");
+
+        districts.add(district1);
+        districts.add(district2);
+
+        Mockito.when(districtService.getDistricts()).thenReturn(districts);
+
+        ResponseEntity<List<District>> response = districtController.getDistricts();
+
+        assertEquals(HttpStatus.FOUND, response.getStatusCode());
+        assertEquals(districts, response.getBody());
+    }
+
+    @Test
+    void testGetDistrictById() {
+        Long districtId = 1L;
+        District district = new District();
+        district.setId(districtId);
+        district.setName("district1");
+        Mockito.when(districtService.getDistrictById(districtId)).thenReturn(Optional.of(district));
+
+        ResponseEntity<Optional<DistrictResponse>> response = districtController.getDistrictById(districtId);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertTrue(response.getBody().isPresent());
+        assertEquals("district1", response.getBody().get().getName());
+    }
+
+    @Test
+    void testGetDistrictById_NotFound() {
+        Long districtId = 99L;
+        Mockito.when(districtService.getDistrictById(districtId)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () -> {
+            districtController.getDistrictById(districtId);
+        });
+    }
+}
+```
+
+LeadClientControllerTest
+
+```ruby
+@SpringBootTest
+public class LeadClientControllerTest {
+    @Mock
+    private ILeadClientService leadClientService;
+
+    @Mock
+    private IUserService userService;
+
+    @InjectMocks
+    private LeadClientController leadClientController;
+
+    @Test
+    @WithMockUser(roles = "REALTOR")
+    void testGetLeadClients() {
+        List<LeadClient> expectedClients = new ArrayList<>();
+        when(leadClientService.getLeadClients()).thenReturn(expectedClients);
+
+        ResponseEntity<List<LeadClient>> response = leadClientController.getLeadClients();
+
+        assertEquals(HttpStatus.FOUND, response.getStatusCode());
+        assertEquals(expectedClients, response.getBody());
+    }
+
+    @Test
+    void testGetLeadClientByEmail() {
+        String userId = "testUser";
+        LeadClient leadClient = new LeadClient();
+        when(leadClientService.getLeadClientByEmail(userId)).thenReturn(Optional.of(leadClient));
+
+        ResponseEntity<Optional<LeadClientResponse>> response = leadClientController.getLeadClientByEmail(userId);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertTrue(response.getBody().isPresent());
+    }
+
+    @Test
+    void testGetLeadClientById() {
+        Long leadClientId = 1L;
+        LeadClient leadClient = new LeadClient();
+        leadClient.setId(leadClientId);
+        leadClient.setSecondName("leadClient");
+        when(leadClientService.getLeadClientById(leadClientId)).thenReturn(Optional.of(leadClient));
+
+        ResponseEntity<Optional<LeadClientResponse>> response = leadClientController.getLeadClientById(leadClientId);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertTrue(response.getBody().isPresent());
+        assertEquals("leadClient", response.getBody().get().getSecondName());
+    }
+
+    @Test
+    public void testAddLeadClient() throws Exception {
+        String email = "user@example.com";
+        LeadClient leadClient = new LeadClient();
+        leadClient.setSecondName("Doe");
+        leadClient.setFirstName("John");
+        leadClient.setPatronymic("Michael");
+        leadClient.setPhoneNumber("1234567890");
+        User user = new User();
+        user.setEmail(email);
+
+        when(userService.getUser(email)).thenReturn(user);
+        when(leadClientService.addLeadClient(any(), any(), any(), any(), any())).thenReturn(leadClient);
+
+        ResponseEntity<?> response = leadClientController.addLeadClient(email, leadClient);
+
+        assertEquals("Operation is successful", response.getBody());
+        verify(userService).getUser(email);
+        verify(leadClientService).addLeadClient(leadClient.getSecondName(), leadClient.getFirstName(),
+                leadClient.getPatronymic(), leadClient.getPhoneNumber(), user);
+    }
+}
+```
+
+AuthControllerTest
+
+```ruby
+@SpringBootTest
+public class AuthControllerTest {
+    @InjectMocks
+    private AuthController authController;
+
+    @Mock
+    private IUserService userService;
+
+    @Mock
+    private AuthenticationManager authenticationManager;
+
+    @Mock
+    private JwtUtils jwtUtils;
+    @Test
+    public void testRegisterUser_Success() {
+
+        User user = new User();
+        user.setEmail("test@example.com");
+        user.setPassword("password");
+        when(userService.registerUser(user)).thenReturn(user);
+
+        ResponseEntity<?> response = authController.registerUser(user);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Registration successful!", response.getBody());
+        verify(userService, times(1)).registerUser(user);
+    }
+
+    @Test
+    public void testRegisterUser_UserAlreadyExistsException() {
+
+        User user = new User();
+        user.setEmail("test@example.com");
+        user.setPassword("password");
+        when(userService.registerUser(any(User.class))).thenThrow(new UserAlreadyExistsException(user.getEmail()
+                + " уже существует"));
+
+        ResponseEntity<?> response = authController.registerUser(user);
+
+        assertEquals(user.getEmail() + " уже существует", response.getBody());
+        verify(userService, times(1)).registerUser(user);
+    }
+}
+```
+
+### Интеграционное тестирование
+
+Ниже представлены примеры интеграционных тестов
+
+LeadClientControllerTest
+
+```ruby
+@SpringBootTest
+@AutoConfigureMockMvc
+public class LeadClientControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    @WithMockUser(roles = "REALTOR")
+    public void testGetLeadClients() throws Exception {
+        mockMvc.perform(get("/leadClients/all"))
+                .andExpect(status().isFound());
+    }
+}
+```
+
+RealEstateObjectControllerTest
+
+```ruby
+@SpringBootTest
+@AutoConfigureMockMvc
+public class RealEstateObjectControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void shouldReturnAllRealEstateObjects() throws Exception {
+        mockMvc.perform(get("/objects/all"))
+                .andExpect(status().isFound());
+    }
+}
+```
