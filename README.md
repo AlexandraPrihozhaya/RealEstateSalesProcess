@@ -840,3 +840,40 @@ public class RealEstateObjectControllerTest {
     }
 }
 ```
+
+## Развертывание
+
+Для развертывания приложения решено использовать Docker.
+Docker – одна из самых популярных контейнерных платформ, привлекающая внимание многих команд веб-разработчиков. Все больше компаний переходят на Docker из-за её надежности, производительности и функциональности.
+Docker – программное обеспечение для автоматизации развёртывания и управления приложениями в средах с поддержкой контейнеризации.
+Docker Compose – это инструментальное средство, входящее в состав Docker. Оно предназначено для решения задач, связанных с развёртыванием проектов.
+
+![image_2024-12-17_22-07-07](https://github.com/user-attachments/assets/a4db1668-ff3d-408f-be05-a38b362ecab1)
+![image](https://github.com/user-attachments/assets/77e9796f-ab19-4317-8f4a-152192432224)
+
+Dockerfile для сервера
+
+```ruby
+FROM eclipse-temurin:17.0.8_7-jre
+EXPOSE 8080
+WORKDIR /src
+COPY target/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+```
+
+Dockerfile для клиента
+
+```ruby
+FROM node:16
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+![image](https://github.com/user-attachments/assets/49aeaa89-b4bd-40db-afd9-996a830eeb19)
+![image](https://github.com/user-attachments/assets/c5dc9600-c9d9-47ec-9ee9-4c7f44f40f40)
+
