@@ -29,7 +29,7 @@ const MenuRealtor = () => {
         <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Клиенты</SA>
         <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Заявки</SA>
         <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Сделки</SA>
-        <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Аналитика</SA>
+        <SA href='/realtor/statistics' isActive={window.location.pathname === '/realtor/statistics'}>Аналитика</SA>
       </SADiv>
 
       <SSpacer></SSpacer>

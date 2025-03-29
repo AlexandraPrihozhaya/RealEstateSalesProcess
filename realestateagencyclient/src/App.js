@@ -27,6 +27,7 @@ import CatalogHouses from './pages/CatalogHouses';
 import CatalogRooms from './pages/CatalogRooms';
 import CatalogPlots from './pages/CatalogPlots';
 import RealtorLeadPage from './pages/RealtorLeadPage';
+import RealtorStatisticsPage from './pages/RealtorStatisticsPage';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
           <Route path="/catalog/rooms" element={<CatalogRooms />} />
           <Route path="/catalog/plots" element={<CatalogPlots />} />
           <Route path="/realtor/leads/:leadId" element={<RealtorLeadPage />} />
+          <Route path="/realtor/statistics" element={<RealtorStatisticsPage />} />
         </Routes>
       </Router>
     </AuthProvider>
