@@ -2,12 +2,9 @@ package com.prikhozhaya.realestateagency.controller;
 
 import com.prikhozhaya.realestateagency.exception.ResourceNotFoundException;
 import com.prikhozhaya.realestateagency.model.LeadClient;
-import com.prikhozhaya.realestateagency.model.Realtor;
 import com.prikhozhaya.realestateagency.model.User;
 import com.prikhozhaya.realestateagency.response.LeadClientResponse;
-import com.prikhozhaya.realestateagency.response.RealtorResponse;
 import com.prikhozhaya.realestateagency.service.ILeadClientService;
-import com.prikhozhaya.realestateagency.service.IRealtorService;
 import com.prikhozhaya.realestateagency.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +16,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/leadClients")
@@ -50,7 +46,7 @@ public class LeadClientController {
         LeadClient leadClient1 = leadClientService.addLeadClient(secondName, firstName, patronymic, phoneNumber, theUser);
         LeadClientResponse leadClientResponse = new LeadClientResponse(leadClient1.getId(), leadClient1.getSecondName(),
                 leadClient1.getFirstName(), leadClient1.getPatronymic(), leadClient1.getPhoneNumber(), leadClient1.getUser(),
-                leadClient1.getRealEstateObjects());
+                leadClient1.getRealEstateObjects(), leadClient1.getReviews());
         System.out.println(ResponseEntity.ok(leadClientResponse));
         return ResponseEntity.ok(
                 "Operation is successful");
@@ -62,7 +58,19 @@ public class LeadClientController {
         return theLeadClient.map(leadClient -> {
             LeadClientResponse leadClientResponse = getLeadClientResponse(leadClient);
             return ResponseEntity.ok(Optional.of(leadClientResponse));
-        }).orElseThrow(() -> new ResourceNotFoundException("Lead not found"));
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/updateLeadClient/{userId}")
+    @PreAuthorize("hasRole('ROLE_USER') and #email == principal.username")
+    public ResponseEntity<LeadClientResponse> updateLeadClientByEmail(@PathVariable("userId") String email, @RequestBody LeadClient leadClient) {
+        String secondName = leadClient.getSecondName();
+        String firstName = leadClient.getFirstName();
+        String patronymic = leadClient.getPatronymic();
+        String phoneNumber = leadClient.getPhoneNumber();
+        leadClientService.updateLeadClientByEmail(email, secondName, firstName, patronymic, phoneNumber);
+        LeadClientResponse leadClientResponse = getLeadClientResponse(leadClient);
+        return ResponseEntity.ok(leadClientResponse);
     }
 
     @GetMapping("/lead-id-{leadId}")
@@ -77,6 +85,6 @@ public class LeadClientController {
     private LeadClientResponse getLeadClientResponse(LeadClient leadClient) {
         return new LeadClientResponse(leadClient.getId(),
                 leadClient.getSecondName(), leadClient.getFirstName(), leadClient.getPatronymic(),
-                leadClient.getPhoneNumber(), leadClient.getUser(), leadClient.getRealEstateObjects());
+                leadClient.getPhoneNumber(), leadClient.getUser(), leadClient.getRealEstateObjects(), leadClient.getReviews());
     }
 }

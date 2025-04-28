@@ -9,14 +9,6 @@ export const SCard = styled.div`
   }
 `;
 
-export const SCardImage = styled.div`
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  background-image: url(${props => props.img});
-`;
-
 export const SCardContent = styled.div`
   margin: 15px;
 `;
@@ -56,3 +48,59 @@ export const SP = styled.p`
 
 
 
+export const SImg = styled.img`
+
+`;
+
+export const StyledButton = styled.div`
+    color: #000000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+        opacity: 0.7;
+    }
+`;
+
+export const CustomPrevButton = styled(StyledButton)`
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+`;
+
+export const CustomNextButton = styled(StyledButton)`
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+`;
+
+export const StyledSwiperPagination = styled.div`
+    .swiper-pagination {
+        bottom: 10px;
+    }
+
+    .swiper-pagination-bullet {
+        background: #757575;
+        opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #000000;
+        opacity: 1;
+    }
+`;
+
+export const SDivFav = styled.div`
+
+`;
+
+export const SCardDiv = styled.div`
+
+`;

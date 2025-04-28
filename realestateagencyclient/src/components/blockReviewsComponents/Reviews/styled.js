@@ -6,8 +6,9 @@ export const SSection = styled.section`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 200px 40px 200px;
+  margin: 0 200px 30px 200px;
   background-color: #f5f5f5;
+  // background: linear-gradient(135deg, #ebebeb,  #d15a5a);
 `;
 
 export const SButton = styled.button`
@@ -36,10 +37,16 @@ export const SImg = styled.img`
 
 export const SFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: #ff8a00;
+  // font-size:24px;
 `;
 
 export const SH3 = styled.h3`
 
+`;
+
+export const SDivText = styled.div`
+  text-align: center;
+  margin-bottom: 40px;
 `;
 
 export const SText = styled.text`

@@ -1,5 +1,6 @@
 package com.prikhozhaya.realestateagency.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class LeadClient {
     private String patronymic;
     private String phoneNumber;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
@@ -28,4 +30,8 @@ public class LeadClient {
     @JsonIgnore
     @OneToMany(mappedBy="leadClient", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<RealEstateObject> realEstateObjects;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="leadClient", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Review> reviews;
 }

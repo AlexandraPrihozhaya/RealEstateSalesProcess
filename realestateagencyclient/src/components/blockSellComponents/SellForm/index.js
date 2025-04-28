@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { SSection, SForm, SFormData, SInput, SButton, SH1, SH2,
   SFormGroup, SLabel, SSelect, SFormInput, SOption, STextarea, SFormDiv, SDivInput } from './styled';
-import { getAllDistricts, getAllMicroDistricts, addLeadClient, addObject } from '../../utils/ApiFunctions';  
+import { getAllDistricts, getAllMicroDistricts, addLeadClient, addObject, getLeadClientByEmail } from '../../utils/ApiFunctions';  
 
 
 const SellForm = () => {
@@ -37,14 +37,35 @@ const SellForm = () => {
     setLead({ ...lead, [e.target.name]: e.target.value })
   }
 
+  const [clientInfo, setClientInfo] = useState("");
+
+  useEffect(() => {
+    fetchClient();
+  }, []);
+
+  const fetchClient = async () => {
+    try {
+        const clientData = await getLeadClientByEmail(userEmail);
+        if (clientData == null) {
+            setClientInfo(clientData);
+        } else { 
+            setLead(clientData);
+        }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
   const handleAddObject = async (e) => {
     e.preventDefault()
     try {
-      const result = await addLeadClient(userEmail, lead)
-      console.log(result)
-      const result1 = await addObject(userEmail, object)
-      setSuccessMessage("Вы успешно добавили объект недвижимости")
-      setErrorMessage("")
+      if (clientInfo == null) {
+        const result = await addLeadClient(userEmail, lead);
+      }
+      const result1 = await addObject(userEmail, object);
+      setSuccessMessage("Вы успешно добавили объект недвижимости");
+      setErrorMessage("");
       setObject({ 
         name: "",
         type: "",
@@ -139,6 +160,7 @@ const handleSelectedMicroDistrictChange = (e) => {
 useEffect(() => {
     console.log(object.microDistrict);
   }, [object.microDistrict]);
+
   return (
     <SSection>
       <SH1>
@@ -195,7 +217,7 @@ useEffect(() => {
                     <SFormGroup>
                         <SLabel for="numberOfRooms">Количество комнат</SLabel>
                         <SFormInput>
-                            <SInput type="number" id="numberOfRooms" name="numberOfRooms" placeholder="Введите число комнат" value={object.numberOfRooms} onChange={handleInputChange} />
+                        <SInput type="number" id="numberOfRooms" name="numberOfRooms" placeholder="Введите число комнат" value={object.numberOfRooms} onChange={handleInputChange} />
                         </SFormInput>
                     </SFormGroup>
                     <SFormGroup>
@@ -209,7 +231,7 @@ useEffect(() => {
                         <SFormInput>
                             <SInput type="text" id="address" name="address" placeholder="Введите адрес" value={object.address} onChange={handleInputChange} />
                         </SFormInput>
-                        </SFormGroup>
+                    </SFormGroup>
                     <SFormGroup>
                     <SLabel for="yearOfConstruction">Год постройки</SLabel>
                         <SFormInput>
@@ -231,19 +253,19 @@ useEffect(() => {
                     <SFormData>
                     <SDivInput>
                         <SLabel htmlFor="secondName">Фамилия</SLabel>
-                        <SInput type="text" id="secondName" name="secondName" placeholder="Введите фамилию" onChange={handleInputChangeLead}/>
+                        <SInput type="text" id="secondName" name="secondName" placeholder="Введите фамилию" value={lead.secondName} onChange={handleInputChangeLead}/>
                       </SDivInput>
                       <SDivInput>
                         <SLabel htmlFor="firstName">Имя</SLabel>
-                        <SInput type="text" id="firstName" name="firstName" placeholder="Введите имя" onChange={handleInputChangeLead}/>
+                        <SInput type="text" id="firstName" name="firstName" placeholder="Введите имя" value={lead.firstName} onChange={handleInputChangeLead}/>
                       </SDivInput>
                       <SDivInput>
                         <SLabel htmlFor="patronymic">Отчество</SLabel>
-                        <SInput type="text" id="patronymic" name="patronymic" placeholder="Введите отчество" onChange={handleInputChangeLead}/>
+                        <SInput type="text" id="patronymic" name="patronymic" placeholder="Введите отчество" value={lead.patronymic} onChange={handleInputChangeLead}/>
                       </SDivInput>
                       <SDivInput>
                         <SLabel htmlFor="phoneNumber">Телефон</SLabel>
-                        <SInput type="tel" id="phoneNumber" name="phoneNumber" placeholder="Введите телефон" onChange={handleInputChangeLead}/>
+                        <SInput type="tel" id="phoneNumber" name="phoneNumber" placeholder="Введите телефон" value={lead.phoneNumber} onChange={handleInputChangeLead}/>
                       </SDivInput>
 
                         <SButton type="submit">Отправить</SButton>

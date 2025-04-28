@@ -44,4 +44,15 @@ public class LeadClientService implements ILeadClientService {
         return leadClientRepository.findByEmail(userId);
     }
 
+    @Override
+    public LeadClient updateLeadClientByEmail(String email, String secondName, String firstName,
+                                              String patronymic, String phoneNumber) {
+        LeadClient leadClient = leadClientRepository.findByEmail(email).get();
+        if (secondName != null) leadClient.setSecondName(secondName);
+        if (firstName != null) leadClient.setFirstName(firstName);
+        if (patronymic != null) leadClient.setPatronymic(patronymic);
+        if (phoneNumber != null) leadClient.setPhoneNumber(phoneNumber);
+        return leadClientRepository.save(leadClient);
+    }
+
 }

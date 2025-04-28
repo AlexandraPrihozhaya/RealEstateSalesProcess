@@ -28,6 +28,8 @@ import CatalogRooms from './pages/CatalogRooms';
 import CatalogPlots from './pages/CatalogPlots';
 import RealtorLeadPage from './pages/RealtorLeadPage';
 import RealtorStatisticsPage from './pages/RealtorStatisticsPage';
+import RealtorCallRequestsPage from './pages/RealtorCallRequestsPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -60,6 +62,8 @@ function App() {
           <Route path="/catalog/plots" element={<CatalogPlots />} />
           <Route path="/realtor/leads/:leadId" element={<RealtorLeadPage />} />
           <Route path="/realtor/statistics" element={<RealtorStatisticsPage />} />
+          <Route path="/realtor/callRequests" element={<RealtorCallRequestsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </AuthProvider>

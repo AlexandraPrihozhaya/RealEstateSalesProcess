@@ -3,7 +3,6 @@ package com.prikhozhaya.realestateagency.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +26,8 @@ public class RealEstateObject {
     private Integer numberOfRooms;
     private Integer floor;
     private Integer yearOfConstruction;
+
+    @Lob
     private String description;
 
 
@@ -41,4 +42,8 @@ public class RealEstateObject {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lead_client_id")
     private LeadClient leadClient;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="realEstateObject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Favorites> favorites;
 }

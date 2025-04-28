@@ -24,6 +24,7 @@ public class UserController {
     @GetMapping("/all")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<User>> getUsers(){
+
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.FOUND);
     }
 
@@ -75,7 +76,6 @@ public class UserController {
     }
 
     private UserResponse getUserResponse(User user) {
-
-        return new UserResponse(user.getId(), user.getEmail(), user.getRoles());
+        return new UserResponse(user.getId(), user.getEmail(), user.getRoles(), user.getFavorites());
     }
 }

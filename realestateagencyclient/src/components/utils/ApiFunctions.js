@@ -254,7 +254,7 @@ export async function addLeadClient(userId, leadClientData) {
 export async function addObject(userId, objectData) {
   try {
       const response = await axios.post(`http://localhost:8080/objects/addRealEstateObject/${userId}`, objectData, {
-  headers: getHeader()
+        headers: getHeader()
       });
       console.log("Ответ от сервера:", response.data);
       return response.data;
@@ -289,4 +289,134 @@ try {
 } catch (error) {
   throw error
 }
+}
+
+//
+export async function getAllCallRequests() {
+  try {
+    const result = await axios.get("http://localhost:8080/call_requests/all", {
+        headers: getHeader(),
+        validateStatus: () => {
+        return true;
+        }
+      })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching call requests: ${error.message}`)
+  }
+  }
+
+//
+export async function addCallRequest(callRequestData) {
+  try {
+      const response = await axios.post("http://localhost:8080/call_requests/addCallRequest", callRequestData, {
+        headers: getHeader()
+      });
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка при добавлении заявки:", error.response ? error.response.data : error.message);
+      throw error; 
+  }
+}
+
+//
+export async function updateCallRequest(callRequestId, status) {
+  try {
+    const formData = new FormData();
+    formData.append("id", callRequestId);
+    formData.append("status", status);
+    const response = await axios.put("http://localhost:8080/call_requests/update", formData, {
+      headers: getHeader()
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      throw new Error(error.response.data);
+    } else {
+      throw new Error(`Call Request updating error: ${error.message}`);
+    }
+  }
+}
+
+//
+export async function addReview(userId, reviewData) {
+  try {
+      const response = await axios.post(`http://localhost:8080/reviews/addReview/${userId}`, reviewData, {
+        headers: getHeader()
+      });
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка при добавлении отзыва:", error.response ? error.response.data : error.message);
+      throw error;
+  }
+}
+
+//
+export async function getAllReviews() {
+  try {
+    const result = await axios.get("http://localhost:8080/reviews/all", {
+        headers: getHeader(),
+        validateStatus: () => {
+        return true;
+        }
+      })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching reviews: ${error.message}`)
+  }
+}
+
+//
+export async function getLeadClientByEmail(userId) {
+  try {
+    const response = await axios.get(`http://localhost:8080/leadClients/lead-email-${userId}`, {
+    headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    return null;
+    //console.error("Потенциальный клиент не найден", error.response ? error.response.data : error.message);
+    //throw error;
+  }
+}
+
+//
+export async function changeLeadClientAccount(userId, leadClientData) {
+  const formData = new FormData()
+    formData.append("secondName", leadClientData.secondName)
+    formData.append("firstName", leadClientData.firstName)
+    formData.append("patronymic", leadClientData.patronymic)
+    formData.append("phoneNumber", leadClientData.phoneNumber)
+  const response = await axios.put(`http://localhost:8080/leadClients/updateLeadClient/${userId}`, formData, {
+    headers: getHeader()
+  })
+  return response 
+}
+
+//
+export async function getUserByEmail(email) {
+  try {
+    const response = await axios.get(`http://localhost:8080/users/user/${email}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+//
+export async function addToFavorites(userId, objectData) {
+  try {
+      const response = await axios.post(`http://localhost:8080/favorites/addFavorites/${userId}`, objectData, {
+  headers: getHeader()
+      });
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка при добавлении объекта в избранное:", error.response ? error.response.data : error.message);
+      throw error;
+  }
 }

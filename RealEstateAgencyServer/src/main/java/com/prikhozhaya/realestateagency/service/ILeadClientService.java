@@ -1,7 +1,6 @@
 package com.prikhozhaya.realestateagency.service;
 
 import com.prikhozhaya.realestateagency.model.LeadClient;
-import com.prikhozhaya.realestateagency.model.Realtor;
 import com.prikhozhaya.realestateagency.model.User;
 
 import java.io.IOException;
@@ -19,4 +18,7 @@ public interface ILeadClientService {
                              String phoneNumber, User user) throws IOException, SQLException;
 
     Optional<LeadClient> getLeadClientByEmail(String userId);
+
+    LeadClient updateLeadClientByEmail(String email, String secondName, String firstName,
+                                       String patronymic, String phoneNumber);
 }
