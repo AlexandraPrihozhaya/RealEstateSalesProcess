@@ -112,3 +112,7 @@ export const SText = styled.div`
     font-size: 20px;
     text-align: justify;
 `;
+
+export const SDivFav = styled.div`
+
+`;

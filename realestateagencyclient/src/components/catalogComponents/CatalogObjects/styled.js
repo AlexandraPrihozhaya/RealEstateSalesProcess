@@ -13,7 +13,7 @@ export const SCardContent = styled.div`
   margin: 15px;
 `;
 
-export const SCardTitle= styled(Link)`
+export const SCardTitle = styled(Link)`
   overflow: hidden; 
   text-overflow: ellipsis; 
   display: -webkit-box; 

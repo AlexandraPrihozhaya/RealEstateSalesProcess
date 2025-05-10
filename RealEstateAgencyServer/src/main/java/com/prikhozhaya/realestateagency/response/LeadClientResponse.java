@@ -1,6 +1,7 @@
 package com.prikhozhaya.realestateagency.response;
 
 import com.prikhozhaya.realestateagency.model.RealEstateObject;
+import com.prikhozhaya.realestateagency.model.Request;
 import com.prikhozhaya.realestateagency.model.Review;
 import com.prikhozhaya.realestateagency.model.User;
 import lombok.Data;
@@ -16,16 +17,13 @@ public class LeadClientResponse {
     private String secondName;
     private String firstName;
     private String patronymic;
-
     private String phoneNumber;
     private User user;
-
     private List<RealEstateObject> realEstateObjects;
-
-    private List<Review> reviews;
+    List<Request> requests;
 
     public LeadClientResponse(Long id, String secondName, String firstName, String patronymic, String phoneNumber,
-                              User user, List<RealEstateObject> realEstateObjects, List<Review> reviews) {
+                              User user, List<RealEstateObject> realEstateObjects, List<Request> requests) {
         this.id = id;
         this.secondName = secondName;
         this.firstName = firstName;
@@ -33,6 +31,6 @@ public class LeadClientResponse {
         this.phoneNumber = phoneNumber;
         this.user = user;
         this.realEstateObjects = realEstateObjects;
-        this.reviews = reviews;
+        this.requests = requests;
     }
 }

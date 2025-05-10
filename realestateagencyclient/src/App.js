@@ -30,6 +30,7 @@ import RealtorLeadPage from './pages/RealtorLeadPage';
 import RealtorStatisticsPage from './pages/RealtorStatisticsPage';
 import RealtorCallRequestsPage from './pages/RealtorCallRequestsPage';
 import ProfilePage from './pages/ProfilePage';
+import RealtorRequestsPage from './pages/RealtorRequestPage';
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
           <Route path="/realtor/statistics" element={<RealtorStatisticsPage />} />
           <Route path="/realtor/callRequests" element={<RealtorCallRequestsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/realtor/requests" element={<RealtorRequestsPage />} />
         </Routes>
       </Router>
     </AuthProvider>

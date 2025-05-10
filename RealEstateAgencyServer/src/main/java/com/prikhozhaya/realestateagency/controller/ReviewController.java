@@ -3,9 +3,11 @@ package com.prikhozhaya.realestateagency.controller;
 import com.prikhozhaya.realestateagency.exception.ResourceNotFoundException;
 import com.prikhozhaya.realestateagency.model.LeadClient;
 import com.prikhozhaya.realestateagency.model.Review;
+import com.prikhozhaya.realestateagency.model.User;
 import com.prikhozhaya.realestateagency.response.ReviewResponse;
 import com.prikhozhaya.realestateagency.service.ILeadClientService;
 import com.prikhozhaya.realestateagency.service.IReviewService;
+import com.prikhozhaya.realestateagency.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReviewController {
     private final IReviewService reviewService;
-    private final ILeadClientService leadClientService;
+    private final IUserService userService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Review>> getReviews(){
@@ -38,14 +40,9 @@ public class ReviewController {
         String reviewText = review.getReview();
         Integer rating = review.getRating();
 
-        // Получаем LeadClient по email
-        Optional<LeadClient> leadClientOptional = leadClientService.getLeadClientByEmail(email);
+        User user = userService.getUser(email);
 
-        // Проверяем, есть ли LeadClient
-        LeadClient leadClient = leadClientOptional.orElseThrow(() ->
-                new RuntimeException("LeadClient not found for email: " + email)
-        );
-        Review review1 = reviewService.addReview(name, reviewText, rating, leadClient);
+        Review review1 = reviewService.addReview(name, reviewText, rating, user);
 
         ReviewResponse reviewResponse = new ReviewResponse(review1.getId(), review1.getName(),
                 review1.getReview(), review1.getRating());

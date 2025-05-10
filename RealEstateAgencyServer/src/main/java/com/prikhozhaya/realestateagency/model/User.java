@@ -41,4 +41,12 @@ public class User {
     @JsonManagedReference
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Favorites> favorites;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Notification> notifications;
 }

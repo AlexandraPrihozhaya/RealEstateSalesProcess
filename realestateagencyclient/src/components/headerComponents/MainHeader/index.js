@@ -32,7 +32,7 @@ const MainHeader = () => {
 
         <SSlide>
           <SSlideContent>
-          <STitle>Риэлторское агентство "Адрес успеха"</STitle>
+          <STitle>Адрес успеха</STitle>
             <SText>Найдите свой дом, создайте свою историю</SText>
             <SButton><SLink to='/catalog'>Перейти в каталог</SLink></SButton>
           </SSlideContent>
@@ -41,7 +41,7 @@ const MainHeader = () => {
 
         <SSlide>
           <SSlideContent>
-          <STitle>Риэлторское агентство "Адрес успеха"</STitle>
+          <STitle>Адрес успеха</STitle>
             <SText>Найдите свой дом, создайте свою историю</SText>
             <SButton><SLink to='/catalog'>Перейти в каталог</SLink></SButton>
           </SSlideContent>
@@ -50,7 +50,7 @@ const MainHeader = () => {
 
         <SSlide>
           <SSlideContent>
-          <STitle>Риэлторское агентство "Адрес успеха"</STitle>
+          <STitle>Адрес успеха</STitle>
             <SText>Найдите свой дом, создайте свою историю</SText>
             <SButton><SLink to='/catalog'>Перейти в каталог</SLink></SButton>
           </SSlideContent>

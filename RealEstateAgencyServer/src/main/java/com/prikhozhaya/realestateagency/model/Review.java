@@ -1,5 +1,6 @@
 package com.prikhozhaya.realestateagency.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,8 @@ public class Review {
     private String review;
     private Integer rating;
 
-
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "lead_client_id")
-    private LeadClient leadClient;
+    @JoinColumn(name = "user_id")
+    private User user;
 }

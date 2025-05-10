@@ -76,6 +76,7 @@ public class UserController {
     }
 
     private UserResponse getUserResponse(User user) {
-        return new UserResponse(user.getId(), user.getEmail(), user.getRoles(), user.getFavorites());
+        return new UserResponse(user.getId(), user.getEmail(), user.getRoles(), user.getFavorites(), user.getReviews(),
+                user.getNotifications());
     }
 }

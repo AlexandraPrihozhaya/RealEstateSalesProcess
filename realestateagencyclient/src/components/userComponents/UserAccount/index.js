@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import { SSection, SNav, SUl, SLi, SDivContent } from './styled';
 import UserInfoProfile from '../UserInfoProfile';
-import BlockDescription from '../../blockDescriptionComponents/BlockDescription';
 import BlockAbout from '../../blockAboutComponents/BlockAbout';
-import AllServices from '../../blockServices/AllServices';
 import UserAds from '../UserAds';
 import UserReviews from '../UserReviews';
 import UserFavorites from '../UserFavorites';
+import UserRequests from '../UserRequests';
+import UserNotifications from '../UserNotifications';
 
 const UserAccount = () => {
 
@@ -19,7 +19,7 @@ const UserAccount = () => {
         case 'ads':
           return <UserAds />;
         case 'request':
-          return<BlockDescription />;
+          return<UserRequests />;
         case 'transactions':
           return<BlockAbout />;
         case 'reviews':
@@ -27,9 +27,7 @@ const UserAccount = () => {
         case 'favorites':
           return<UserFavorites />;
         case 'notifications':
-          return<AllServices />;
-        default:
-          return <AllServices />;
+          return<UserNotifications />;
       }
     };
 

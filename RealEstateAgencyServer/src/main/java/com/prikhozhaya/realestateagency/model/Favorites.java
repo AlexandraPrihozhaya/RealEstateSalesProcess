@@ -15,7 +15,6 @@ public class Favorites {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "real_estate_object_id")
     private RealEstateObject realEstateObject;

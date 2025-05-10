@@ -53,15 +53,12 @@ public class RealEstateObjectController {
         MicroDistrict theMicroDistrict = realEstateObject.getMicroDistrict();
         List<Picture> pictures = realEstateObject.getPictures();
 
-        // Инициализация списка, если он равен null
         if (pictures == null) {
             pictures = new ArrayList<>();
         }
 
-        // Получаем LeadClient по email
         Optional<LeadClient> leadClientOptional = leadClientService.getLeadClientByEmail(email);
 
-        // Проверяем, есть ли LeadClient
         LeadClient leadClient = leadClientOptional.orElseThrow(() ->
                 new RuntimeException("LeadClient not found for email: " + email)
         );

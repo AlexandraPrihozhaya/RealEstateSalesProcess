@@ -5,6 +5,8 @@ import { SSection, SPaginationContainer, SDivPages, SDivCount,
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { getAllLeads } from '../../utils/ApiFunctions';
 import { SiQuicklook } from "react-icons/si";
+import { IoIosNotifications } from "react-icons/io";
+import ModalNotificationLead from '../ModalNotificationLead';
 
 const RealtorInfoLeads = () => {
 
@@ -13,6 +15,8 @@ const RealtorInfoLeads = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const [successMessage, setSuccessMessage] = useState("")
+    const [showModal, setShowModal] = useState(false);
+    const [selectedLeadId, setSelectedLeadId] = useState(null);
   
   useEffect(() => {
       fetchLeads()
@@ -30,7 +34,7 @@ const RealtorInfoLeads = () => {
       }
     }
 
-  const columns = ['№', 'Фамилия', 'Имя', 'Отчество', 'Телефон', 'Email', 'Подробная информация'];
+  const columns = ['№', 'Фамилия', 'Имя', 'Отчество', 'Телефон', 'Email', 'Подробная информация', 'Уведомление'];
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -60,7 +64,10 @@ if (startIndex < 0) {
 }
 const endIndex = startIndex + itemsPerPage;
 const pageData = leads.slice(startIndex, endIndex);
-
+const openModal = (leadId) => {
+  setSelectedLeadId(leadId);
+  setShowModal(true);
+};
   return (
     <>
       <SSection>
@@ -104,10 +111,11 @@ const pageData = leads.slice(startIndex, endIndex);
                         <STd>{lead.firstName}</STd>
                         <STd>{lead.patronymic}</STd>
                         <STd>{lead.phoneNumber}</STd>
-                        <STd>{lead.user.email}</STd>
+                        <STd>{lead.user && lead.user.email ? lead.user.email : 'Нет данных'}</STd>
                         <STd>
                         <SButtonTask><SLink to={`/realtor/leads/${lead.id}`}><SiQuicklook /></SLink></SButtonTask>
                         </STd>
+                        <STd><SButtonTask onClick={() => openModal(lead.id)}><IoIosNotifications /></SButtonTask></STd>
                     </STr>
                 ))}
             </STbody> 
@@ -115,6 +123,13 @@ const pageData = leads.slice(startIndex, endIndex);
             </>
             )}
       </SSection>
+
+      {showModal && (
+    <ModalNotificationLead
+        onClose={() => setShowModal(false)} 
+        leadId={selectedLeadId} 
+    />
+  )}
       </>
   );
 };

@@ -28,7 +28,8 @@ export const SSpacer = styled.span`
 `;
 
 export const SImage = styled.img`
-  height: 164px;
+  height: 82px;
+  margin-bottom: 50px;
 `;
 
 export const SExit = styled.div`

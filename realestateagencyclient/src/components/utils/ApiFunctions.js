@@ -408,15 +408,138 @@ export async function getUserByEmail(email) {
 }
 
 //
-export async function addToFavorites(userId, objectData) {
+export async function addToFavorites(userId, objectId) {
   try {
-      const response = await axios.post(`http://localhost:8080/favorites/addFavorites/${userId}`, objectData, {
+      const response = await axios.post(`http://localhost:8080/favorites/addFavorites/${userId}?realEstateObjectId=${objectId}`, null, {
   headers: getHeader()
       });
       console.log("Ответ от сервера:", response.data);
       return response.data;
   } catch (error) {
       console.error("Ошибка при добавлении объекта в избранное:", error.response ? error.response.data : error.message);
+      throw error;
+  }
+}
+
+//
+export async function isInFavorites(userId, objectId) {
+  try {
+      const response = await axios.post(`http://localhost:8080/favorites/isInFavorites/${userId}?realEstateObjectId=${objectId}`, null, {
+          headers: getHeader()
+      });
+      console.log(objectId);
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка:", error.response ? error.response.data : error.message);
+      throw error;
+  }
+}
+
+//
+export async function addRequest(userId, objectId) {
+  try {
+      const response = await axios.post(`http://localhost:8080/requests/addRequest/${userId}?realEstateObjectId=${objectId}`, null, {
+          headers: getHeader()
+      });
+      console.log(objectId);
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка:", error.response ? error.response.data : error.message);
+      throw error;
+  }
+}
+
+//
+export async function deleteRequest(requestId) {
+  try {
+    const response = await axios.delete(`http://localhost:8080/requests/delete/${requestId}`, {
+      headers: getHeader()
+    })
+    return response.data
+  } catch (error) {
+    return error.message
+  }
+}
+
+//
+export async function getAllRequests() {
+  try {
+    const result = await axios.get("http://localhost:8080/requests/all", {
+      headers: getHeader(),
+      validateStatus: () => {
+      return true;
+      }
+    })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching requests: ${error.message}`)
+  }
+}
+
+//
+export async function updateRequest(requestId, status) {
+    try {
+      const formData = new FormData();
+      formData.append("id", requestId);
+      formData.append("status", status);
+      const response = await axios.put("http://localhost:8080/requests/update", formData, {
+        headers: getHeader()
+      });
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        throw new Error(error.response.data);
+      } else {
+        throw new Error(`Request updating error: ${error.message}`);
+      }
+    }
+  }
+
+//
+export async function addNotification(userId, notificationData) {
+  try {
+      const response = await axios.post(`http://localhost:8080/notifications/addNotification/${userId}`, notificationData, {
+  headers: getHeader()
+      });
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка при отправлении уведомления:", error.response ? error.response.data : error.message);
+      throw error;
+  }
+}
+
+//
+export async function updateNotification(notificationId, status) {
+try {
+  const formData = new FormData();
+  formData.append("id", notificationId);
+  formData.append("status", status);
+  const response = await axios.put("http://localhost:8080/notifications/update", formData, {
+    headers: getHeader()
+  });
+  return response.data;
+} catch (error) {
+  if (error.response && error.response.data) {
+    throw new Error(error.response.data);
+  } else {
+    throw new Error(`Notification updating error: ${error.message}`);
+  }
+}
+}
+
+//
+export async function addNotificationLeadClient(leadClientId, notificationData) {
+  try {
+      const response = await axios.post(`http://localhost:8080/notifications/addNotificationByLeadClientId/${leadClientId}`, notificationData, {
+  headers: getHeader()
+      });
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка при отправлении уведомления:", error.response ? error.response.data : error.message);
       throw error;
   }
 }

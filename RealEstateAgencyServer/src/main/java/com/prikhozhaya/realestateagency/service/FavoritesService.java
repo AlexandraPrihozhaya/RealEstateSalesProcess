@@ -33,4 +33,11 @@ public class FavoritesService implements IFavoritesService {
             return favoritesRepository.save(favorites);
         }
     }
+
+    @Override
+    public Boolean isInFavorites(Long realEstateObjectId, Long userId) throws IOException, SQLException {
+
+        Optional<Favorites> existingFavorite = favoritesRepository.findByRealEstateObjectAndUser(realEstateObjectId, userId);
+        return existingFavorite.isPresent();
+    }
 }

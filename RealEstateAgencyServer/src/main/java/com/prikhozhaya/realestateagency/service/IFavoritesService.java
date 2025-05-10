@@ -10,4 +10,6 @@ import java.sql.SQLException;
 public interface IFavoritesService {
 
     Favorites addFavorites(RealEstateObject realEstateObject, User user) throws IOException, SQLException;
+
+    Boolean isInFavorites(Long realEstateObjectId, Long userId) throws IOException, SQLException;
 }

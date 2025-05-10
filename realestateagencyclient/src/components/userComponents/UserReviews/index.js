@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SSection, SPaginationContainer, SDivPages, SDivCount, 
     SDivList, SText, SSelect, SOption, SButton, SCard, SCardContainer, 
     SCardContent, SDivText, SCardName, SStars, SCardText, SFontAwesomeIcon } from './styled';
-import { getLeadClientByEmail } from '../../utils/ApiFunctions';
+import { getUserByEmail } from '../../utils/ApiFunctions';
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +20,7 @@ const UserReviews = () => {
     
     const fetchReviews = async () => {
         try {
-            const clientData = await getLeadClientByEmail(userId);
+            const clientData = await getUserByEmail(userId);
             setClientInfo(clientData);
             setReviews(clientData.reviews || []);
             setIsLoading(false);
@@ -56,7 +56,7 @@ const UserReviews = () => {
     const endIndex = startIndex + itemsPerPage;
     const pageData = reviews.slice(startIndex, endIndex);
 
-    if (!clientInfo || reviews.length === 0) {
+    if (reviews.length === 0) {
         return <SDivText>Нет отзывов для отображения</SDivText>;
     }
 
