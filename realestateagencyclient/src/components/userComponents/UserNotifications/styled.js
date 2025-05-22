@@ -63,7 +63,7 @@ export const SCardContainer = styled.div`
 export const SCard = styled.div`
     background-color: #ffffff;
     border: 1px solid #ddd;
-    padding: 16px;
+    padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: calc(33.33% - 10px);
     box-sizing: border-box;

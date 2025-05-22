@@ -7,6 +7,7 @@ import UserReviews from '../UserReviews';
 import UserFavorites from '../UserFavorites';
 import UserRequests from '../UserRequests';
 import UserNotifications from '../UserNotifications';
+import UserTransactions from '../UserTransactions';
 
 const UserAccount = () => {
 
@@ -21,7 +22,7 @@ const UserAccount = () => {
         case 'request':
           return<UserRequests />;
         case 'transactions':
-          return<BlockAbout />;
+          return<UserTransactions />
         case 'reviews':
           return<UserReviews />;
         case 'favorites':

@@ -543,3 +543,65 @@ export async function addNotificationLeadClient(leadClientId, notificationData) 
       throw error;
   }
 }
+
+//
+export async function addTransaction(userId, objectId, leadClientId) {
+  try {
+      const response = await axios.post(`http://localhost:8080/transactions/addTransaction/${userId}?realEstateObjectId=${objectId}&leadClientId=${leadClientId}`, null, {
+          headers: getHeader()
+      });
+      console.log(objectId);
+      console.log("Ответ от сервера:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("Ошибка:", error.response ? error.response.data : error.message);
+      throw error;
+  }
+}
+
+//
+export async function getAllTransactions() {
+  try {
+    const result = await axios.get("http://localhost:8080/transactions/all", {
+      headers: getHeader(),
+      validateStatus: () => {
+      return true;
+      }
+    })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching transactions: ${error.message}`)
+  }
+}
+
+
+//
+export async function updateTransaction(transactionId, transactionStageId) {
+  try {
+    const response = await axios.put(`http://localhost:8080/transactions/update/${transactionId}?transactionStageId=${transactionStageId}`, null, {
+    headers: getHeader()
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      throw new Error(error.response.data);
+    } else {
+      throw new Error(`Transaction updating error: ${error.message}`);
+    }
+  }
+}
+
+//
+export async function getAllTransactionStages() {
+  try {
+    const result = await axios.get("http://localhost:8080/transactionStages/all", {
+      headers: getHeader(),
+      validateStatus: () => {
+      return true;
+      }
+    })
+    return result.data
+  } catch (error) {
+    throw new Error(`Error fetching transaction stages: ${error.message}`)
+  }
+}

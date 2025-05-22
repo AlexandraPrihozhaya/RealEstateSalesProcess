@@ -29,8 +29,9 @@ import CatalogPlots from './pages/CatalogPlots';
 import RealtorLeadPage from './pages/RealtorLeadPage';
 import RealtorStatisticsPage from './pages/RealtorStatisticsPage';
 import RealtorCallRequestsPage from './pages/RealtorCallRequestsPage';
-import ProfilePage from './pages/ProfilePage';
 import RealtorRequestsPage from './pages/RealtorRequestPage';
+import RealtorTransactionsPage from './pages/RealtorTransactionsPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -64,8 +65,9 @@ function App() {
           <Route path="/realtor/leads/:leadId" element={<RealtorLeadPage />} />
           <Route path="/realtor/statistics" element={<RealtorStatisticsPage />} />
           <Route path="/realtor/callRequests" element={<RealtorCallRequestsPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/realtor/requests" element={<RealtorRequestsPage />} />
+          <Route path="/realtor/transactions" element={<RealtorTransactionsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </AuthProvider>

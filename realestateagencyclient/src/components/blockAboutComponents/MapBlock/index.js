@@ -48,14 +48,14 @@ const MapBlock = ({ address }) => {
           state={defaultState}
           style={defaultStyle}
         >
-          {position && ( // Проверяем, что позиция определена перед рендерингом Placemark
+   
             <Placemark 
-              geometry={position} 
+              geometry={defaultState.center} 
               options={{
                 iconColor: '#ff8a00',
               }} 
             />
-          )}
+       
         </Map>
       </YMaps>
     </SSection>

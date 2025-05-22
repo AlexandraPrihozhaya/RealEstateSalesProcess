@@ -38,7 +38,19 @@ const UserNotifications = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(3); 
 
-    const totalPages = Math.ceil(notifications.length / itemsPerPage);
+
+    const handleItemsPerPageChange = (e) => {
+        setItemsPerPage(parseInt(e.target.value));
+        setCurrentPage(1);
+    };
+
+    const sortedPageData = notifications.sort((a, b) => {
+        const dateA = new Date(a.notificationDate[0], a.notificationDate[1] - 1, a.notificationDate[2], a.notificationDate[3], a.notificationDate[4], a.notificationDate[5]);
+        const dateB = new Date(b.notificationDate[0], b.notificationDate[1] - 1, b.notificationDate[2], b.notificationDate[3], b.notificationDate[4], b.notificationDate[5]);
+        return dateB - dateA;
+    });
+
+    const totalPages = Math.ceil(sortedPageData.length / itemsPerPage);
 
     const handlePrevPage = () => {
         if (currentPage > 1) {
@@ -52,20 +64,9 @@ const UserNotifications = () => {
         }
     };
 
-    const handleItemsPerPageChange = (e) => {
-        setItemsPerPage(parseInt(e.target.value));
-        setCurrentPage(1);
-    };
-
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const pageData = notifications.slice(startIndex, endIndex);
-
-    const sortedPageData = pageData.sort((a, b) => {
-        const dateA = new Date(a.notificationDate[0], a.notificationDate[1] - 1, a.notificationDate[2], a.notificationDate[3], a.notificationDate[4], a.notificationDate[5]);
-        const dateB = new Date(b.notificationDate[0], b.notificationDate[1] - 1, b.notificationDate[2], b.notificationDate[3], b.notificationDate[4], b.notificationDate[5]);
-        return dateB - dateA;
-    });
+    const pageData = sortedPageData.slice(startIndex, endIndex);
 
     const openModal = (notification) => {
         setSelectedNotification(notification);
@@ -103,7 +104,7 @@ const UserNotifications = () => {
                     </SPaginationContainer>
                     
                     <SCardContainer>
-                        {sortedPageData.map((notification) => (
+                        {pageData.map((notification) => (
                             <SCard key={notification.id} onClick={() => openModal(notification)}>
                                 <SCardContent>
                                     <SCardName>{notification.name}</SCardName>

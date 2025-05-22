@@ -65,7 +65,7 @@ public class NotificationController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> updateRequest(@RequestBody Request request)
+    public ResponseEntity<String> updateNotification(@RequestBody Request request)
     {
         try {
             notificationService.updateNotificationStatus(request.getId(), request.getStatus());

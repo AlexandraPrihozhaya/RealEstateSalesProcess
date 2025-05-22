@@ -57,7 +57,7 @@ public class RequestController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Request>> getCallRequests(){
+    public ResponseEntity<List<Request>> getRequests(){
         return new ResponseEntity<>(requestService.getRequests(), HttpStatus.FOUND);
     }
 

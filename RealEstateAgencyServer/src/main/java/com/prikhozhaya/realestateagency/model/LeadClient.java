@@ -34,4 +34,8 @@ public class LeadClient {
     @JsonIgnore
     @OneToMany(mappedBy="leadClient", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Request> requests;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="leadClient", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
 }

@@ -29,10 +29,9 @@ const MenuRealtor = () => {
         <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Клиенты</SA>
         <SA href='/realtor/callRequests' isActive={window.location.pathname === '/realtor/callRequests'}>Звонки</SA>
         <SA href='/realtor/requests' isActive={window.location.pathname === '/realtor/requests'}>Заявки</SA>
-        <SA href='/admin/users' isActive={window.location.pathname === '/admin/users'}>Сделки</SA>
+        <SA href='/realtor/transactions' isActive={window.location.pathname === '/realtor/transactions'}>Сделки</SA>
         <SA href='/realtor/statistics' isActive={window.location.pathname === '/realtor/statistics'}>Аналитика</SA>
       </SADiv>
-
       <SSpacer></SSpacer>
       <SA onClick={handleLogout}>
         <SExit>Выйти <SIoMdExit /></SExit>

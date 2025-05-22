@@ -46,7 +46,7 @@ public class LeadClientController {
         LeadClient leadClient1 = leadClientService.addLeadClient(secondName, firstName, patronymic, phoneNumber, theUser);
         LeadClientResponse leadClientResponse = new LeadClientResponse(leadClient1.getId(), leadClient1.getSecondName(),
                 leadClient1.getFirstName(), leadClient1.getPatronymic(), leadClient1.getPhoneNumber(), leadClient1.getUser(),
-                leadClient1.getRealEstateObjects(), leadClient1.getRequests());
+                leadClient1.getRealEstateObjects(), leadClient1.getRequests(), leadClient1.getTransactions());
         System.out.println(ResponseEntity.ok(leadClientResponse));
         return ResponseEntity.ok(
                 "Operation is successful");
@@ -86,6 +86,6 @@ public class LeadClientController {
         return new LeadClientResponse(leadClient.getId(),
                 leadClient.getSecondName(), leadClient.getFirstName(), leadClient.getPatronymic(),
                 leadClient.getPhoneNumber(), leadClient.getUser(), leadClient.getRealEstateObjects(),
-                leadClient.getRequests());
+                leadClient.getRequests(), leadClient.getTransactions());
     }
 }

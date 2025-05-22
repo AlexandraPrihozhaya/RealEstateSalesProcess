@@ -34,7 +34,18 @@ const RealtorInfoCallRequests = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  const totalPages = Math.ceil(callRequests.length / itemsPerPage);
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(parseInt(e.target.value));
+    setCurrentPage(1);
+  };
+
+const sortedPageData = callRequests.sort((a, b) => {
+  const dateA = new Date(a.dateTime[0], a.dateTime[1] - 1, a.dateTime[2], a.dateTime[3], a.dateTime[4], a.dateTime[5]);
+  const dateB = new Date(b.dateTime[0], b.dateTime[1] - 1, b.dateTime[2], b.dateTime[3], b.dateTime[4], b.dateTime[5]);
+  return dateB - dateA;
+});
+
+const totalPages = Math.ceil(sortedPageData.length / itemsPerPage);
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
@@ -48,23 +59,12 @@ const RealtorInfoCallRequests = () => {
     }
   };
 
-  const handleItemsPerPageChange = (e) => {
-    setItemsPerPage(parseInt(e.target.value));
-    setCurrentPage(1);
-  };
-
   const startIndex = (currentPage - 1) * itemsPerPage;
-if (startIndex < 0) {
-  startIndex = 0;
-}
-const endIndex = startIndex + itemsPerPage;
-const pageData = callRequests.slice(startIndex, endIndex);
-
-const sortedPageData = pageData.sort((a, b) => {
-  const dateA = new Date(a.dateTime[0], a.dateTime[1] - 1, a.dateTime[2], a.dateTime[3], a.dateTime[4], a.dateTime[5]);
-  const dateB = new Date(b.dateTime[0], b.dateTime[1] - 1, b.dateTime[2], b.dateTime[3], b.dateTime[4], b.dateTime[5]);
-  return dateB - dateA;
-});
+  if (startIndex < 0) {
+    startIndex = 0;
+  }
+  const endIndex = startIndex + itemsPerPage;
+  const pageData = sortedPageData.slice(startIndex, endIndex);
 
 const handleUpdate = async (callRequestId, status) => {
   try {
@@ -120,7 +120,7 @@ const handleUpdate = async (callRequestId, status) => {
                 </STr> 
             </SThead>
             <STbody>
-                {sortedPageData.map((callRequest, index) => (
+                {pageData.map((callRequest, index) => (
                     <STr key={callRequest.id}>
                         <STd key={index}>{index+1}</STd>
                         <STd>{callRequest.name}</STd>

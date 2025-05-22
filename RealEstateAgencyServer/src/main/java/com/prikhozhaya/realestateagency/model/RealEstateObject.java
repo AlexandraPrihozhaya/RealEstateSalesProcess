@@ -30,7 +30,6 @@ public class RealEstateObject {
     @Lob
     private String description;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "micro_district_id")
     private MicroDistrict microDistrict;
@@ -46,4 +45,8 @@ public class RealEstateObject {
     @JsonIgnore
     @OneToMany(mappedBy="realEstateObject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Favorites> favorites;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="realEstateObject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
 }
